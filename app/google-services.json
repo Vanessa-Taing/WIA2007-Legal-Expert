@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "629387082368",
+    "project_id": "peacepulsecotest",
+    "storage_bucket": "peacepulsecotest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629387082368:android:2e4e051bf3f229c9ec8465",
+        "android_client_info": {
+          "package_name": "com.example.peacepulseco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB014HUug9wdeLyARJTdg9PqfDtIODSWnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,767 @@
+{
+  "name": "login_general_user_",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "xdCG7Tpb96t8UALwvS44V8",
+    "node": "11:70",
+    "version": "4483324245",
+    "component-id": "1f3113d7e80dbf50de7a4f7b61899985aafe594a"
+  },
+  "default": "Login (general user)",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "text",
+        "id": "Welcome"
+      },
+      {
+        "type": "text",
+        "id": "Login"
+      },
+      {
+        "type": "text",
+        "id": "OR"
+      },
+      {
+        "type": "text",
+        "id": "Don’t have an account?"
+      },
+      {
+        "type": "group",
+        "id": "Component 2"
+      },
+      {
+        "type": "group",
+        "id": "button"
+      },
+      {
+        "type": "group",
+        "id": "Group 12"
+      },
+      {
+        "type": "text",
+        "id": "Email"
+      },
+      {
+        "type": "text",
+        "id": "Password"
+      },
+      {
+        "type": "group",
+        "id": "Group 11"
+      },
+      {
+        "type": "text",
+        "id": "Forgot Password ?"
+      },
+      {
+        "type": "text",
+        "id": "Remember me"
+      },
+      {
+        "type": "text",
+        "id": "Sign Up"
+      },
+      {
+        "type": "vector",
+        "id": "Ellipse 16"
+      },
+      {
+        "type": "vector",
+        "id": "Ellipse 17"
+      },
+      {
+        "type": "image",
+        "id": "Facebook-logo-blue-circle-large-transparent-png 2"
+      },
+      {
+        "type": "image",
+        "id": "google-logo-png-suite-everything-you-need-know-about-google-newest-0 2"
+      },
+      {
+        "type": "text",
+        "id": "Sign In"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 6"
+      },
+      {
+        "type": "text",
+        "id": "Enter Your Email"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 7"
+      },
+      {
+        "type": "vector",
+        "id": "shape"
+      },
+      {
+        "type": "text",
+        "id": "Enter Your Password"
+      }
+    ],
+    "modes": {
+      "Login (general user)": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": "false",
+            "children": [
+              "Welcome",
+              "Login",
+              "OR",
+              "Don’t have an account?",
+              "Component 2",
+              "button",
+              "Group 12",
+              "Email",
+              "Password",
+              "Group 11",
+              "Forgot Password ?",
+              "Remember me",
+              "Sign Up"
+            ],
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            }
+          },
+          {
+            "id": "Welcome",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "1.5"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "58.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "Welcome",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "32.0",
+            "line-height": "1.2102272510528564",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Login",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "1.5"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "159.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "Login",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "32.0",
+            "line-height": "1.2102272510528564",
+            "typeface": "Inter"
+          },
+          {
+            "id": "OR",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "-3.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "603.0"
+              }
+            },
+            "font-weight": "700.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.5215686274509804"
+            },
+            "text-content": "OR",
+            "overflow": "visible",
+            "text-size": "22.0",
+            "letter-spacing": "-0.44",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Don’t have an account?",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "56.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "742.0"
+              }
+            },
+            "font-weight": "600.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.5215686274509804"
+            },
+            "text-content": "Don’t have an account? ",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "16.0",
+            "line-height": "1.2102272510528564",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Component 2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "-2.160888671875"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "644.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "149.67822265625"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "60.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Ellipse 16",
+              "Ellipse 17",
+              "Facebook-logo-blue-circle-large-transparent-png 2",
+              "google-logo-png-suite-everything-you-need-know-about-google-newest-0 2"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "button",
+            "padding": {
+              "left": "113.0",
+              "top": "19.0",
+              "right": "113.0",
+              "bottom": "19.0"
+            },
+            "border-radius": "10.0",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "-2.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "524.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "Sign In"
+            ],
+            "item-spacing": "10.0",
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "243.96694214876032",
+              "saturation": "0.5170940170940171",
+              "value": "0.9176470588235294"
+            }
+          },
+          {
+            "id": "Group 12",
+            "border-radius": "10.0",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "25.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "270.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "305.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "60.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Rectangle 6",
+              "Enter Your Email"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Email",
+            "margin": {
+              "left": "25.0",
+              "top": "236.0",
+              "right": "281.0",
+              "bottom": "542.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "Email",
+            "overflow": "visible",
+            "text-size": "22.0",
+            "letter-spacing": "-0.44",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Password",
+            "margin": {
+              "left": "24.0",
+              "top": "360.0",
+              "right": "237.0",
+              "bottom": "418.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "Password",
+            "overflow": "visible",
+            "text-size": "22.0",
+            "letter-spacing": "-0.44",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Group 11",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "25.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "394.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "304.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "60.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Rectangle 7",
+              "shape",
+              "Enter Your Password"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Forgot Password ?",
+            "margin": {
+              "left": "209.0",
+              "top": "468.0",
+              "right": "30.0",
+              "bottom": "318.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "font-weight": "600.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "244.61538461538458",
+              "saturation": "0.4850746268656717",
+              "value": "0.5254901960784314"
+            },
+            "text-content": "Forgot Password ?",
+            "overflow": "visible",
+            "text-align": "left",
+            "letter-spacing": "-0.28",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Remember me",
+            "margin": {
+              "left": "43.0",
+              "top": "468.0",
+              "right": "222.0",
+              "bottom": "318.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "font-weight": "600.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "244.61538461538458",
+              "saturation": "0.4850746268656717",
+              "value": "0.5254901960784314"
+            },
+            "text-content": "Remember me",
+            "overflow": "visible",
+            "text-align": "left",
+            "letter-spacing": "-0.28",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Sign Up",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "240.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "743.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "64.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "21.0"
+              }
+            },
+            "font-weight": "700.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "243.96694214876032",
+              "saturation": "0.5170940170940171",
+              "value": "0.9176470588235294"
+            },
+            "text-content": "Sign Up",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-size": "16.0",
+            "line-height": "1.2102272510528564",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Ellipse 16",
+            "margin": {
+              "right": "89.67822265625"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "ellipse_16.svg"
+          },
+          {
+            "id": "Ellipse 17",
+            "margin": {
+              "left": "89.67822265625"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "ellipse_17.svg"
+          },
+          {
+            "id": "Facebook-logo-blue-circle-large-transparent-png 2",
+            "margin": {
+              "left": "10.0",
+              "top": "10.0",
+              "right": "99.67822265625",
+              "bottom": "10.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "image-content": "facebook_logo_blue_circle_large_transparent_png_2.png",
+            "scale": "cover"
+          },
+          {
+            "id": "google-logo-png-suite-everything-you-need-know-about-google-newest-0 2",
+            "margin": {
+              "left": "99.67822265625",
+              "top": "10.0",
+              "right": "10.0",
+              "bottom": "10.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "image-content": "google_logo_png_suite_everything_you_need_know_about_google_newest_0_2.png",
+            "scale": "cover"
+          },
+          {
+            "id": "Sign In",
+            "font-weight": "700.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Login",
+            "overflow": "visible",
+            "text-size": "22.0",
+            "letter-spacing": "-0.44",
+            "typeface": "Open Sans"
+          },
+          {
+            "id": "Rectangle 6",
+            "border-radius": "10.0",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "0.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "0.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "305.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_6.svg"
+          },
+          {
+            "id": "Enter Your Email",
+            "margin": {
+              "left": "17.0",
+              "top": "21.0",
+              "right": "154.0",
+              "bottom": "21.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.5215686274509804"
+            },
+            "text-content": "Enter Your Email",
+            "overflow": "visible",
+            "text-size": "18.0",
+            "letter-spacing": "-0.36",
+            "typeface": "Open Sans"
+          },
+          {
+            "id": "Rectangle 7",
+            "border-radius": "10.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_7.svg"
+          },
+          {
+            "id": "shape",
+            "margin": {
+              "left": "269.0",
+              "top": "23.0",
+              "right": "18.0",
+              "bottom": "22.0"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "-1.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-1.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "shape.svg"
+          },
+          {
+            "id": "Enter Your Password",
+            "margin": {
+              "left": "17.0",
+              "top": "21.0",
+              "right": "118.0",
+              "bottom": "21.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.5215686274509804"
+            },
+            "text-content": "Enter Your Password",
+            "overflow": "visible",
+            "text-size": "18.0",
+            "letter-spacing": "-0.36",
+            "typeface": "Open Sans"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "Login (general user)",
+      "size": {
+        "width": 360.0,
+        "height": 800.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">PeacePulseCo</string>
+
+    <string-array name="tags">
+        <item>Civil Law</item>
+        <item>Constitutional Law</item>
+        <item>Contract Law</item>
+        <item>Criminal Law</item>
+        <item>Family Law</item>
+        <item>Labour Law</item>
+        <item>Property Law</item>
+        <item>Tax Law</item>
+    </string-array>
+    >
+</resources>

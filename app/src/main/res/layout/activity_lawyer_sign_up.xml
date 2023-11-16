@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RequestActivity">
+
+    <EditText
+        android:id="@+id/etRequestName4"
+        android:layout_width="311dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="44dp"
+        android:background="@null"
+        android:fontFamily="@font/open_sans"
+        android:gravity="left|center_vertical"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="0sp"
+        android:text="Enter your Email"
+        android:textColor="#858585"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription3" />
+
+    <View
+        android:id="@+id/viewRequestName4"
+        android:layout_width="332dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/rectangle_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription3"></View>
+
+    <TextView
+        android:id="@+id/tvDescription3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="312dp"
+        android:fontFamily="@font/relay_inter_semibold"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="0sp"
+        android:text="Email"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewRequestName3" />
+
+    <View
+        android:id="@+id/viewRequestName3"
+        android:layout_width="332dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/rectangle_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"></View>
+
+    <EditText
+        android:id="@+id/etRequestName3"
+        android:layout_width="311dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="44dp"
+        android:background="@null"
+        android:fontFamily="@font/open_sans"
+        android:gravity="left|center_vertical"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="0sp"
+        android:text="011-12345678"
+        android:textColor="#858585"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <View
+        android:id="@+id/viewTop"
+        android:layout_width="457dp"
+        android:layout_height="149dp"
+        android:layout_marginEnd="-25dp"
+        android:layout_marginBottom="650dp"
+        android:background="@drawable/rounded_edges"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.617"></View>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/relay_inter_medium"
+        android:text="Personal Information"
+        android:textColor="#eeeeee"
+        android:textSize="28sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <TextView
+        android:id="@+id/tvRequestName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="308dp"
+        android:fontFamily="@font/relay_inter_semibold"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="0sp"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewTop" />
+
+    <View
+        android:id="@+id/viewRequestName"
+        android:layout_width="332dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/rectangle_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRequestName"></View>
+
+    <EditText
+        android:id="@+id/etRequestName"
+        android:layout_width="311dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="44dp"
+        android:background="@null"
+        android:fontFamily="@font/open_sans"
+        android:gravity="left|center_vertical"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="0sp"
+        android:text="Full name (as per IC/Passport)"
+        android:textColor="#858585"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRequestName" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="288dp"
+        android:fontFamily="@font/relay_inter_semibold"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="0sp"
+        android:text="Gender"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewRequestName" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutType"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="332dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvType">
+
+        <AutoCompleteTextView
+            android:id="@+id/actvType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle_6"
+            android:inputType="none"
+            android:text="Select gender" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="216dp"
+        android:fontFamily="@font/relay_inter_semibold"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="0sp"
+        android:text="Phone number"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutType" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="27dp"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
