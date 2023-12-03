@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme with action bar. -->
+    <style name="Base.Theme.LegalExpert_LawyerActivity" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/off_white</item>
+        <item name="colorPrimary">@color/mainPurple</item>
+    </style>
+    <style name="Theme.LegalExpert_LawyerActivity" parent="Base.Theme.LegalExpert_LawyerActivity" />
+
+
+
+    <!-- for action bar-->
+    <style name="ActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- Customize the ActionBar color -->
+        <item name="android:background">@color/mainPurple</item>
+        <!-- Customize the ActionBar title text appearance -->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="Widget.AppCompat.ActionBar">
+        <!-- Customize the ActionBar title text appearance -->
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,87 @@
+{
+  "project_info": {
+    "project_number": "1031411664852",
+    "firebase_url": "https://legalexpert-2ff12-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "legalexpert-2ff12",
+    "storage_bucket": "legalexpert-2ff12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031411664852:android:bdc46b3de80b04376e7841",
+        "android_client_info": {
+          "package_name": "com.example.legalexpert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD36EEXKoQg2Rt5b91ed_uGzkhijke_j2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031411664852:android:03eb682d60db7c916e7841",
+        "android_client_info": {
+          "package_name": "com.example.legalexpert_lawyeractivity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD36EEXKoQg2Rt5b91ed_uGzkhijke_j2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031411664852:android:59e036187d1a9f6d6e7841",
+        "android_client_info": {
+          "package_name": "com.example.mad_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD36EEXKoQg2Rt5b91ed_uGzkhijke_j2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031411664852:android:bdad91aa12d7f89e6e7841",
+        "android_client_info": {
+          "package_name": "com.example.signup_generaluser"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD36EEXKoQg2Rt5b91ed_uGzkhijke_j2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
