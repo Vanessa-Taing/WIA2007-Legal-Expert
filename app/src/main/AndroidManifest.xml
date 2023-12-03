@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Base.Theme.LegalExpert"
+        tools:targetApi="31">
+        <activity
+            android:name=".updateLawyerProfile"
+            android:exported="true" />
+        <activity
+            android:name=".userSetting"
+            android:exported="true" />
+        <activity
+            android:name=".updateEmail"
+            android:exported="true" />
+        <activity
+            android:name=".uploadDoc"
+            android:exported="true" />
+        <activity
+            android:name=".login_selectRole"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lawyerLoginPage"
+            android:exported="true" />
+        <activity
+            android:name=".shareUserProfile"
+            android:exported="true" />
+        <activity
+            android:name=".UploadProfilePic"
+            android:exported="true" />
+        <activity
+            android:name=".updateUserProfile"
+            android:exported="true" />
+        <activity
+            android:name=".lawyerSetting"
+            android:exported="true" />
+        <activity
+            android:name=".lawyerProfile"
+            android:exported="true" />
+        <activity
+            android:name=".signUp_SelectRole"
+            android:exported="true" />
+        <activity
+            android:name=".lawyerProfessional_Info"
+            android:exported="true" />
+        <activity
+            android:name=".userCaseDescription"
+            android:exported="true" />
+        <activity
+            android:name=".lawyerPersonal_Info"
+            android:exported="true" />
+        <activity
+            android:name=".userProfile"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login1_generalUser"
+            android:exported="true" />
+        <activity
+            android:name=".SignUp_generalUser"
+            android:exported="true" />
+    </application>
+
+</manifest>

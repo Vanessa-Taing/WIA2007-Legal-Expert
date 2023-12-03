@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">MAD_Login</string>
+
+    <string-array name="caseType">
+        <item>Criminal</item>
+    </string-array>
+
+    <string-array name="lawFirm">
+        <item>LING_ThengBook</item>
+    </string-array>
+
+    <string-array name="specialization">
+        <item>Family</item>
+    </string-array>
+
+
+    <string-array name="state">
+        <item>Selangor</item>
+        <item>Kuala Lumpur</item>
+        <item>Labuan</item>
+        <item>Johor</item>
+        <item>Perlis</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Melaka</item>
+        <item>Pulau Penang</item>
+        <item>Pahang</item>
+        <item>Perak</item>
+        <item>Negeri Sembilan</item>
+        <item>Putrajaya</item>
+        <item>Kelantan</item>
+        <item>Kedah</item>
+        <item>Terengganu</item>
+    </string-array>
+    <string name="facebook_app_id">1030866911458821</string>
+    <string name="fb_login_protocol_scheme">fb1030866911458821</string>
+    <string name="facebook_client_token">bb4a97b9cf2c71b85a0eaf3cc3a56027</string>
+</resources>
