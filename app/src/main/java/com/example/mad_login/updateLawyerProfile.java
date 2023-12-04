@@ -275,6 +275,7 @@ public class updateLawyerProfile extends AppCompatActivity {
             });
         }
     }
+
     //fetch data from Firebase and display
     private void showUserProfile(FirebaseUser firebaseUser) {
         String userID = firebaseUser.getUid();

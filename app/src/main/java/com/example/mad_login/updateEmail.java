@@ -36,6 +36,7 @@ public class updateEmail extends AppCompatActivity {
     private String oldEmail,newEmail,userPwd;
     private Button btnUpdateEmail;
     private EditText etNewEmail,etPwd;
+    private DatabaseReference lawyersRef,usersRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,14 +146,15 @@ public class updateEmail extends AppCompatActivity {
 
                     // Check user type and navigate to the appropriate setting activity
                     String userId = firebaseUser.getUid();
-                    DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Registered Users").child(userId);
-                    DatabaseReference lawyersRef = FirebaseDatabase.getInstance().getReference("Registered Lawyers").child(userId);
+                    usersRef = FirebaseDatabase.getInstance().getReference("Registered Users").child(userId);
+                    lawyersRef = FirebaseDatabase.getInstance().getReference("Registered Lawyers").child(userId);
 
                     usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
                                 // User is in "Registered Users"
+                                usersRef.child("email").setValue(newEmail); //update email in database
                                 Intent intent = new Intent(updateEmail.this, userSetting.class);
                                 startActivity(intent);
                                 finish();
@@ -163,6 +165,7 @@ public class updateEmail extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.exists()) {
                                             // User is in "Registered Lawyers"
+                                            lawyersRef.child("email").setValue(newEmail);
                                             Intent intent = new Intent(updateEmail.this, lawyerSetting.class);
                                             startActivity(intent);
                                             finish();
@@ -198,5 +201,4 @@ public class updateEmail extends AppCompatActivity {
             }
         });
     }
-
 }

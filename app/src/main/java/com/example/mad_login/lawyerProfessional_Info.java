@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class lawyerProfessional_Info extends AppCompatActivity {
     private EditText ETBarNumber,ETExpYear;
     private String[] lawFirm = {"LING & THENG BOOK","other"};
-    private String[] specialization = {"Family","other"};
+    private String[] specialization = {"Family Law","other"};
     private String[] qualification ={"CERTIFICATE IN LEGAL PRACTICE(CLP)","other"};
     private AutoCompleteTextView ACTVLawFirm,ACTVSpecialization,ACTVQualification;
     private ArrayAdapter<String> adapterLawFirm,adapterSpecialization,adapterQualification;
@@ -251,7 +251,7 @@ public class lawyerProfessional_Info extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(this, "Professional Info saved to Firebase", Toast.LENGTH_SHORT).show();
                             // Intent to switch to the profile page
-                            Intent intent = new Intent(this, login1_generalUser.class);
+                            Intent intent = new Intent(this, lawyerLoginPage.class);
                             startActivity(intent);
 
                             // Finish the current activity to prevent going back to it from the profile page
