@@ -194,13 +194,143 @@
                 android:hint=" Select (DD/MM/YYYY)"
                 android:inputType="date"
                 android:textSize="25sp" />
+            <!--bar number-->
+            <TextView
+                android:id="@+id/TVBarNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bar Number"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_below="@+id/ETLanguage"/>
+
+            <EditText
+                android:id="@+id/ETBarNumber"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVBarNumber"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint=" 12345678"/>
+
+            <!--Law Firm-->
+            <TextView
+                android:id="@+id/TVLawFirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Law Firm"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETBarNumber"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILLawFirm"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/TVLawFirm">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ACTVLawFirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/material_dynamic_neutral95"
+                    android:hint="Select Your Law Firm"
+                    android:inputType="none"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Legal Specializations-->
+            <TextView
+                android:id="@+id/TVSpecialization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Legal Specializations"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/TILLawFirm"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILSpecialization"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/TVSpecialization">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ACTVSpecialization"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/material_dynamic_neutral95"
+                    android:hint="Select Your Specialization"
+                    android:inputType="none"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Years of Experience -->
+            <TextView
+                android:id="@+id/TVExpYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Years of Experience"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/TILSpecialization"/>
+
+            <EditText
+                android:id="@+id/ETExpYear"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVExpYear"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint=" 5" />
+
+            <!--Qualification -->
+            <TextView
+                android:id="@+id/TVQualification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qualification"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETExpYear"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILQualification"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/TVQualification">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ACTVQualification"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/material_dynamic_neutral95"
+                    android:hint="Select"
+                    android:inputType="none"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!--Update-->
             <Button
                 android:id="@+id/btnUpdate"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ETLanguage"
+                android:layout_below="@+id/TILQualification"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="Update"/>

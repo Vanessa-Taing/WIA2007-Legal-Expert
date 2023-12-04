@@ -6,11 +6,18 @@
     </string-array>
 
     <string-array name="lawFirm">
-        <item>LING_ThengBook</item>
+        <item>LING_Theng Book</item>
+        <item>other</item>
     </string-array>
 
     <string-array name="specialization">
-        <item>Family</item>
+        <item>Family Law</item>
+        <item>other</item>
+    </string-array>
+
+    <string-array name="qualification">
+        <item>CERTIFICATE IN LEGAL PRACTICE(CLP)</item>
+        <item>other</item>
     </string-array>
 
 
@@ -32,7 +39,4 @@
         <item>Kedah</item>
         <item>Terengganu</item>
     </string-array>
-    <string name="facebook_app_id">1030866911458821</string>
-    <string name="fb_login_protocol_scheme">fb1030866911458821</string>
-    <string name="facebook_client_token">bb4a97b9cf2c71b85a0eaf3cc3a56027</string>
 </resources>

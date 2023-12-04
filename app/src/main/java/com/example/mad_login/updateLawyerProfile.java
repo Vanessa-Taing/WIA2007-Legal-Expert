@@ -31,15 +31,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class updateLawyerProfile extends AppCompatActivity {
-    private EditText ETName,ETPhoneNo,ETBirthday,ETLanguage;
+    private EditText ETName,ETPhoneNo,ETBirthday,ETLanguage,ETExpYear,ETBarNumber;
     private ImageView IVback;
     private Button btnUpdate;
     private FirebaseAuth authProfile;
-    private String name,mobile,txtState,txtGender,doB,txtLanguage;
+    private String name,mobile,txtState,txtGender,doB,txtLanguage,expYear,barNumber,specialization,lawFirm,qualification,email;
     private RadioGroup rgGender;
     private RadioButton rbGender;
-    private AutoCompleteTextView ACTVState;
-    private ArrayAdapter<String> adapterState;
+    private AutoCompleteTextView ACTVState,ACTVLawFirm,ACTVSpecialization,ACTVQualification;
+    private ArrayAdapter<String> adapterState,adapterLawFirm,adapterSpecialization,adapterQualification;
+    private static final String[] LAWFIRM = {"LING & THENG BOOK","other"};
+    private static final String[] SPECIALIZATION = {"Family","other"};
+    private static final String[] QUALIFICATION ={"CERTIFICATE IN LEGAL PRACTICE(CLP)","other"};
     private static final String[] STATES = {"Selangor", "Kuala Lumpur", "Labuan", "Johor", "Perlis", "Sabah", "Sarawak",
             "Melaka", "Pulau Penang", "Pahang", "Perak", "Negeri Sembilan", "Putrajaya", "Kelantan", "Kedah", "Terengganu"};
 
@@ -62,6 +65,8 @@ public class updateLawyerProfile extends AppCompatActivity {
         btnUpdate =findViewById(R.id.btnUpdate);
         IVback = findViewById(R.id.IVback);
         ETLanguage =findViewById(R.id.ETLanguage);
+        ETExpYear=findViewById(R.id.ETExpYear);
+        ETBarNumber=findViewById(R.id.ETBarNumber);
 
         IVback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +81,9 @@ public class updateLawyerProfile extends AppCompatActivity {
 
         //dropdown for state
         ACTVState = findViewById(R.id.ACTVState);
+        ACTVLawFirm = findViewById(R.id.ACTVLawFirm);
+        ACTVQualification =findViewById(R.id.ACTVQualification);
+        ACTVSpecialization = findViewById(R.id.ACTVSpecialization);
 
         //dropdown for state
         adapterState = new ArrayAdapter<>(updateLawyerProfile.this, R.layout.dropdown_item, STATES);
@@ -86,6 +94,39 @@ public class updateLawyerProfile extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String item = adapterView.getItemAtPosition(position).toString();
                 Toast.makeText(updateLawyerProfile.this, "Selected State " + item, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //dropdown for lawFirm
+        adapterLawFirm = new ArrayAdapter<>(updateLawyerProfile.this, R.layout.dropdown_item, LAWFIRM);
+        ACTVLawFirm.setAdapter(adapterLawFirm);
+        ACTVLawFirm.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String item = adapterView.getItemAtPosition(position).toString();
+                Toast.makeText(updateLawyerProfile.this, "Selected Law Firm " + item, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //dropdown for specialization
+        adapterSpecialization = new ArrayAdapter<>(updateLawyerProfile.this, R.layout.dropdown_item, SPECIALIZATION);
+        ACTVSpecialization.setAdapter(adapterSpecialization);
+        ACTVSpecialization.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String item = adapterView.getItemAtPosition(position).toString();
+                Toast.makeText(updateLawyerProfile.this, "Selected Specialization " + item, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //dropdown for qualification
+        adapterQualification = new ArrayAdapter<>(updateLawyerProfile.this, R.layout.dropdown_item, QUALIFICATION);
+        ACTVQualification.setAdapter(adapterQualification);
+        ACTVQualification.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String item = adapterView.getItemAtPosition(position).toString();
+                Toast.makeText(updateLawyerProfile.this, "Selected Qualification " + item, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -123,6 +164,11 @@ public class updateLawyerProfile extends AppCompatActivity {
                 mobile = ETPhoneNo.getText().toString().trim();
                 txtState = ACTVState.getEditableText().toString().trim();
                 txtLanguage = ETLanguage.getText().toString().trim();
+                expYear = ETExpYear.getText().toString().trim();
+                barNumber = ETBarNumber.getText().toString().trim();
+                qualification = ACTVQualification.getEditableText().toString().trim();
+                lawFirm = ACTVLawFirm.getEditableText().toString().trim();
+                specialization = ACTVSpecialization.getEditableText().toString().trim();
 
                 // Validate and update profile
                 updateProfile(firebaseUser);
@@ -131,6 +177,7 @@ public class updateLawyerProfile extends AppCompatActivity {
     }
     //update profile
     private void updateProfile(FirebaseUser firebaseUser) {
+        email = firebaseUser.getEmail();
         int selectedGenderID = rgGender.getCheckedRadioButtonId();
         rbGender = findViewById(selectedGenderID);
         if (TextUtils.isEmpty(name)) {
@@ -141,6 +188,14 @@ public class updateLawyerProfile extends AppCompatActivity {
             Toast.makeText(updateLawyerProfile.this, "Please enter your language spoken", Toast.LENGTH_LONG).show();
             ETLanguage.setError("Language spoken is required");
             ETLanguage.requestFocus();
+        } else if (TextUtils.isEmpty(barNumber)) {
+            Toast.makeText(updateLawyerProfile.this, "Please enter your bar number", Toast.LENGTH_LONG).show();
+            ETBarNumber.setError("Bar number is required");
+            ETBarNumber.requestFocus();
+        }else if (TextUtils.isEmpty(expYear)) {
+            Toast.makeText(updateLawyerProfile.this, "Please enter your experience year", Toast.LENGTH_LONG).show();
+            ETExpYear.setError("Year of experience is required");
+            ETExpYear.requestFocus();
         }else if (TextUtils.isEmpty(doB)) {
             Toast.makeText(updateLawyerProfile.this, "Please enter your date of birth", Toast.LENGTH_LONG).show();
             ETBirthday.setError("Date of birth is required");
@@ -161,6 +216,18 @@ public class updateLawyerProfile extends AppCompatActivity {
             Toast.makeText(updateLawyerProfile.this, "Please select your state", Toast.LENGTH_LONG).show();
             ACTVState.setError("State is required");
             ACTVState.requestFocus();
+        }else if (TextUtils.isEmpty(lawFirm)) {
+            Toast.makeText(updateLawyerProfile.this, "Please select your law firm", Toast.LENGTH_LONG).show();
+            ACTVLawFirm.setError("Law Firm is required");
+            ACTVLawFirm.requestFocus();
+        }else if (TextUtils.isEmpty(specialization)) {
+            Toast.makeText(updateLawyerProfile.this, "Please select your specialization", Toast.LENGTH_LONG).show();
+            ACTVSpecialization.setError("Specialization is required");
+            ACTVSpecialization.requestFocus();
+        }else if (TextUtils.isEmpty(qualification)) {
+            Toast.makeText(updateLawyerProfile.this, "Please select your qualification", Toast.LENGTH_LONG).show();
+            ACTVQualification.setError("Qualification is required");
+            ACTVQualification.requestFocus();
         } else {
             //Obtain the data entered by user
             txtGender = rbGender.getText().toString();
@@ -168,10 +235,15 @@ public class updateLawyerProfile extends AppCompatActivity {
             doB = ETBirthday.getText().toString();
             mobile = ETPhoneNo.getText().toString();
             txtState = ACTVState.getText().toString();
+            lawFirm = ACTVLawFirm.getText().toString();
+            specialization = ACTVSpecialization.getText().toString();
+            qualification = ACTVQualification.getText().toString();
             txtLanguage=ETLanguage.getText().toString();
+            expYear = ETExpYear.getText().toString();
+            barNumber = ETBarNumber.getText().toString();
 
             //Enter User Data into the Firebase Realtime Database. Set up dependencies
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(txtGender,txtState,mobile,name,doB,txtLanguage);
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(email,doB,txtGender,mobile, txtState, name,  txtLanguage,  barNumber,  expYear, lawFirm, specialization, qualification);
 
             //extract user reference from Database for "Registered Lawyers"
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Lawyers");
@@ -221,7 +293,11 @@ public class updateLawyerProfile extends AppCompatActivity {
                             mobile = readUserDetails.mobile;
                             txtState =readUserDetails.state;
                             txtLanguage = readUserDetails.language;
-
+                            expYear = readUserDetails.expYear;
+                            barNumber = readUserDetails.barNumber;
+                            lawFirm =readUserDetails.lawFirm;
+                            specialization =readUserDetails.specialization;
+                            qualification=readUserDetails.qualification;
 
                             // Populate UI elements with user data
                             ETName.setText(name);
@@ -229,13 +305,19 @@ public class updateLawyerProfile extends AppCompatActivity {
                             ETPhoneNo.setText(mobile);
                             ACTVState.setText(txtState);
                             ETLanguage.setText(txtLanguage);
-
+                            ETBarNumber.setText(barNumber);
+                            ETExpYear.setText(expYear);
+                            ACTVSpecialization.setText(specialization);
+                            ACTVQualification.setText(qualification);
+                            ACTVLawFirm.setText(lawFirm);
 
                             // Enable EditText fields to make them editable
                             ETName.setEnabled(true);
                             ETBirthday.setEnabled(true);
                             ETPhoneNo.setEnabled(true);
                             ETLanguage.setEnabled(true);
+                            ETExpYear.setEnabled(true);
+                            ETBarNumber.setEnabled(true);
 
                             // Show Gender through Radio Button
                             if (txtGender.equals("Male")) {
@@ -247,14 +329,14 @@ public class updateLawyerProfile extends AppCompatActivity {
 
                             // Set state in AutoCompleteTextView
                             String[] states = getResources().getStringArray(R.array.state);
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(updateLawyerProfile.this,R.layout.dropdown_item, states);
-                            ACTVState.setAdapter(adapter);
+                            ArrayAdapter<String> adapterState = new ArrayAdapter<>(updateLawyerProfile.this,R.layout.dropdown_item, states);
+                            ACTVState.setAdapter(adapterState);
 
                             // Select the state if it matches the user's state
                             if (readUserDetails.state != null) {
-                                int position = adapter.getPosition(readUserDetails.state);
+                                int position = adapterState.getPosition(readUserDetails.state);
                                 if (position != -1) {
-                                    ACTVState.setText(adapter.getItem(position), false);
+                                    ACTVState.setText(adapterState.getItem(position), false);
                                 }
                             }
                             // Handle item selection in AutoCompleteTextView
@@ -267,10 +349,78 @@ public class updateLawyerProfile extends AppCompatActivity {
                                 }
                             });
 
+                            // Set specialization in AutoCompleteTextView
+                            String[] specializations = getResources().getStringArray(R.array.specialization);
+                            ArrayAdapter<String> adapterSpecialization = new ArrayAdapter<>(updateLawyerProfile.this,R.layout.dropdown_item, specializations);
+                            ACTVSpecialization.setAdapter(adapterSpecialization);
+
+                            // Select the specialization if it matches the user's specialization
+                            if (readUserDetails.specialization != null) {
+                                int position = adapterSpecialization.getPosition(readUserDetails.specialization);
+                                if (position != -1) {
+                                    ACTVSpecialization.setText(adapterSpecialization.getItem(position), false);
+                                }
+                            }
+                            // Handle item selection in AutoCompleteTextView
+                            ACTVSpecialization.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    String selectedSpecialization = parent.getItemAtPosition(position).toString();
+                                    // Do something with the selected specialization if needed
+                                    Toast.makeText(updateLawyerProfile.this, "Selected Specialization: " + selectedSpecialization, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            // Set lawFirm in AutoCompleteTextView
+                            String[] lawFirm = getResources().getStringArray(R.array.lawFirm);
+                            ArrayAdapter<String> adapterLawFirm = new ArrayAdapter<>(updateLawyerProfile.this,R.layout.dropdown_item, lawFirm);
+                            ACTVLawFirm.setAdapter(adapterLawFirm);
+
+                            // Select the specialization if it matches the user's lawFirm
+                            if (readUserDetails.lawFirm != null) {
+                                int position = adapterLawFirm.getPosition(readUserDetails.lawFirm);
+                                if (position != -1) {
+                                    ACTVLawFirm.setText(adapterLawFirm.getItem(position), false);
+                                }
+                            }
+                            // Handle item selection in AutoCompleteTextView
+                            ACTVLawFirm.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    String selectedLawFirm = parent.getItemAtPosition(position).toString();
+                                    // Do something with the selected specialization if needed
+                                    Toast.makeText(updateLawyerProfile.this, "Selected Law Firm: " + selectedLawFirm, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            // Set qualification in AutoCompleteTextView
+                            String[] qualifications = getResources().getStringArray(R.array.qualification);
+                            ArrayAdapter<String> adapterQualification= new ArrayAdapter<>(updateLawyerProfile.this,R.layout.dropdown_item, qualifications);
+                            ACTVQualification.setAdapter(adapterQualification);
+
+                            // Select the qualification if it matches the user's qualification
+                            if (readUserDetails.qualification != null) {
+                                int position = adapterQualification.getPosition(readUserDetails.qualification);
+                                if (position != -1) {
+                                    ACTVQualification.setText(adapterQualification.getItem(position), false);
+                                }
+                            }
+                            // Handle item selection in AutoCompleteTextView
+                            ACTVQualification.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    String selectedQualification = parent.getItemAtPosition(position).toString();
+                                    // Do something with the selected Qualification if needed
+                                    Toast.makeText(updateLawyerProfile.this, "Selected Qualification: " + selectedQualification, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
                         }else{
                             Toast.makeText(updateLawyerProfile.this, "Something went wrong!", Toast.LENGTH_LONG).show();
                         }
                     }
+
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
