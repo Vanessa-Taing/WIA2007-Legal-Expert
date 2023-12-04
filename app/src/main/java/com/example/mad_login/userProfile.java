@@ -48,12 +48,6 @@ public class userProfile extends AppCompatActivity {
             }
         });
 
-        ProfilePictureView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(userProfile.this, UploadProfilePic.class));
-            }
-        });
         authProfile =FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
 

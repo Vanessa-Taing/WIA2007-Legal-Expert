@@ -249,43 +249,12 @@
                 android:inputType="textPassword"
                 android:hint="  Confirm Your Password"/>
 
-            <!--Profile Pic-->
-            <TextView
-                android:id="@+id/TVLawyerProfilePic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile Picture"
-                android:layout_centerHorizontal="true"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/ETLawyerConfirmPwd"/>
-
-            <ImageView
-                android:id="@+id/IVLawyerProfilePic"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/TVLawyerProfilePic"
-                android:src="@drawable/mad_cat"
-                android:layout_marginTop="10dp"/>
-
-            <Button
-                android:id="@+id/btnUploadLawyerProfilePic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/IVLawyerProfilePic"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:text="Upload your profile picture"
-                android:backgroundTint="#5087CA"/>
-
             <!--Next-->
             <Button
                 android:id="@+id/btnLawyerNext"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/btnUploadLawyerProfilePic"
+                android:layout_below="@+id/ETLawyerConfirmPwd"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="Next"/>

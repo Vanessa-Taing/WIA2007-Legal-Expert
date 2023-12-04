@@ -43,7 +43,6 @@ public class lawyerPersonal_Info extends AppCompatActivity {
     private DatePickerDialog datePicker;
     private ProgressBar progressBar;
     private String txtState,txtGender,txtPhoneNum,txtName,txtBirthday,txtLanguage;
-    private Button btnUploadLawyerProfilePic;
     private RadioGroup rgGender;
     private RadioButton rbGender;
     private String[] state = {"Selangor", "Kuala Lumpur", "Labuan", "Johor", "Perlis", "Sabah", "Sarawak",
@@ -77,15 +76,7 @@ public class lawyerPersonal_Info extends AppCompatActivity {
         ETName =findViewById(R.id.ETLawyerName);
         ETBirthday=findViewById(R.id.ETLawyerDoB);
         ETPhoneNum=findViewById(R.id.ETLawyerPhoneNo);
-        btnUploadLawyerProfilePic = findViewById(R.id.btnUploadLawyerProfilePic);
         ETLawyerLanguage = findViewById(R.id.ETLawyerLanguage);
-
-        btnUploadLawyerProfilePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(lawyerPersonal_Info.this,UploadProfilePic.class));
-            }
-        });
 
         //Setting up DatePicker on EditText
         ETBirthday.setOnClickListener(new View.OnClickListener() {

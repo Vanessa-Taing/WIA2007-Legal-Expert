@@ -42,12 +42,7 @@ public class lawyerProfile extends AppCompatActivity {
 
         //set onclick when lawyer click profile pic
         IVProfilePic = findViewById(R.id.imageView_profile_dp);
-        IVProfilePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(lawyerProfile.this,UploadProfilePic.class));
-            }
-        });
+
         authProfile =FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
 
