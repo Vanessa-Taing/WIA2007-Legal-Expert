@@ -46,7 +46,7 @@ public class lawyerPersonal_Info extends AppCompatActivity {
     private RadioGroup rgGender;
     private RadioButton rbGender;
     private String[] state = {"Selangor", "Kuala Lumpur", "Labuan", "Johor", "Perlis", "Sabah", "Sarawak",
-            "Melaka", "Pulau Penang", "Pahang", "Perak", "Negeri Sembilan", "Putrajaya", "Kelantan", "Kedah", "Terengganu"};
+            "Melaka", "Pulau Pinang", "Pahang", "Perak", "Negeri Sembilan", "Putrajaya", "Kelantan", "Kedah", "Terengganu"};
     AutoCompleteTextView ACTVState;
     ArrayAdapter<String> adapterState;
     private EditText ETName, ETEmail, ETPassword, ETConfirmPassword, ETBirthday, ETPhoneNum,ETLawyerLanguage;
@@ -279,7 +279,7 @@ public class lawyerPersonal_Info extends AppCompatActivity {
                                         //send Verification Email
                                         firebaseUser.sendEmailVerification();
 
-                                        Toast.makeText(lawyerPersonal_Info.this, "User signed up successfully", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(lawyerPersonal_Info.this, "Your personal information had been saved", Toast.LENGTH_LONG).show();
 
                                         //open User Profile after successful registration
                                         Intent intent = new Intent(lawyerPersonal_Info.this, lawyerProfessional_Info.class);
@@ -297,7 +297,7 @@ public class lawyerPersonal_Info extends AppCompatActivity {
                                         startActivity(intent);
                                         finish(); //to close Register Activity
                                     } else {
-                                        Toast.makeText(lawyerPersonal_Info.this, "User failed to signed up. Please try again", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(lawyerPersonal_Info.this, "Fail to save your personal information. Please try again", Toast.LENGTH_LONG).show();
                                     }
                                     progressBar.setVisibility(View.GONE);
                                 }

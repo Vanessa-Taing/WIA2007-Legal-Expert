@@ -46,7 +46,7 @@ public class SignUp_generalUser extends AppCompatActivity {
     private RadioGroup rgGender;
     private RadioButton rbGender;
     private String[] state = {"Selangor", "Kuala Lumpur", "Labuan", "Johor", "Perlis", "Sabah", "Sarawak",
-            "Melaka", "Pulau Penang", "Pahang", "Perak", "Negeri Sembilan", "Putrajaya", "Kelantan", "Kedah", "Terengganu"};
+            "Melaka", "Pulau Pinang", "Pahang", "Perak", "Negeri Sembilan", "Putrajaya", "Kelantan", "Kedah", "Terengganu"};
     AutoCompleteTextView ACTVState;
     ArrayAdapter<String> adapterState;
     private EditText ETName, ETEmail, ETPassword, ETConfirmPassword, ETBirthday, ETPhoneNum;
