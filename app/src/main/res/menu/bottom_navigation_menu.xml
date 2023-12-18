@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Home"
+        android:icon="@drawable/icon_home"
+        android:id="@+id/menu_home"
+        />
+
+    <item android:title="Cases"
+        android:icon="@drawable/cases_icon"
+        android:id="@+id/menu_cases"
+        />
+
+    <item android:title="Chat"
+        android:icon="@drawable/chat_icon"
+        android:id="@+id/menu_chat"
+        />
+
+    <item android:title="Lawyer"
+        android:icon="@drawable/icon_lawyer"
+        android:id="@+id/menu_request"
+        />
+
+    <item android:title="Profile"
+        android:icon="@drawable/profile_icon"
+        android:id="@+id/menu_profile"/>
+    />
+</menu>
