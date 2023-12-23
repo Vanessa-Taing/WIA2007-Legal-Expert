@@ -5,17 +5,19 @@ public class LawyerInfo {
     private String lawFirm;
     private String specialization;
     private String qualification;
+    private String status;
 
     // Required default constructor for Firebase
     public LawyerInfo() {
     }
 
-    public LawyerInfo(String barNumber, String expYear, String lawFirm, String specialization, String qualification) {
+    public LawyerInfo(String barNumber, String expYear, String lawFirm, String specialization, String qualification,String status) {
         this.barNumber = barNumber;
         this.expYear = expYear;
         this.lawFirm = lawFirm;
         this.specialization = specialization;
         this.qualification = qualification;
+        this.status = status;
     }
 
     // Getter and setter methods for each field
@@ -57,5 +59,13 @@ public class LawyerInfo {
 
     public void setQualification(String qualification) {
         this.qualification = qualification;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

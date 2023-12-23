@@ -11,11 +11,16 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.mad_login.Fragments.AllChatsFragment;
 import com.example.mad_login.Fragments.ClientsFragment;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class lawyer_ChatActivity extends AppCompatActivity {
@@ -75,4 +80,6 @@ public class lawyer_ChatActivity extends AppCompatActivity {
             return fragmentTitleList.get(position);
         }
     }
+
+
 }

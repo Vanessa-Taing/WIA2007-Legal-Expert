@@ -31,6 +31,7 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Callback;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -50,7 +51,7 @@ public class MessageActivity extends AppCompatActivity {
     List<Chat> mchat;
 
     Intent intent;
-    Context context;
+    ValueEventListener seenListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,31 +117,44 @@ public class MessageActivity extends AppCompatActivity {
                 Log.e("MessageActivity", "Error reading user details", error.toException());
             }
         });
+
+        seenMessage(receiverId);
+    }
+
+    private void seenMessage(String userid) {
+        reference = FirebaseDatabase.getInstance().getReference().child("Chats");
+        seenListener = reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Chat chat = snapshot.getValue(Chat.class);
+                    if (chat.getReceiver().equals(currentUser.getUid()) && chat.getSender().equals(userid)) {
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("isseen", true);
+                        snapshot.getRef().updateChildren(hashMap);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void sendMessage(String sender, String receiver, String message) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference = FirebaseDatabase.getInstance().getReference();
 
-        // Create a unique key for each message
-        String messageId = reference.child("Chats").push().getKey();
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", sender);
+        hashMap.put("receiver", receiver);
+        hashMap.put("message", message);
+        hashMap.put("timestamp", System.currentTimeMillis());
+        hashMap.put("isseen", false);
 
-        // Create a Chat object with the message details
-        Chat chat = new Chat(sender, receiver, message);
+        reference.child("Chats").push().setValue(hashMap);
 
-        // Save the message to the "Chats" node using the unique key
-        reference.child("Chats").child(messageId).setValue(chat)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("MessageActivity", "Message sent successfully!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("MessageActivity", "Error sending message", e);
-                    }
-                });
     }
 
 
@@ -156,9 +170,11 @@ public class MessageActivity extends AppCompatActivity {
                 mchat.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
-                    if (chat.getReceiver().equals(currentUserId) && chat.getSender().equals(receiverId) ||
-                            chat.getReceiver().equals(receiverId) && chat.getSender().equals(currentUserId)) {
-                        mchat.add(chat);
+                    if (chat != null) {
+                        if (chat.getReceiver().equals(currentUserId) && chat.getSender().equals(receiverId) ||
+                                chat.getReceiver().equals(receiverId) && chat.getSender().equals(currentUserId)) {
+                            mchat.add(chat);
+                        }
                     }
                 }
 
@@ -172,4 +188,5 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
+
 }
