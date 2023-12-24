@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation ("com.facebook.android:facebook-android-sdk:16.0.0")
     implementation ("com.squareup.picasso:picasso:2.8")
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -44,9 +43,12 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     implementation("com.google.firebase:firebase-firestore:24.9.1")
+    implementation("com.google.ar:core:1.41.0")
+    implementation("androidx.media3:media3-exoplayer:1.2.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
     implementation ("com.github.clans:fab:1.6.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation ("com.itextpdf:itext7-core:7.1.16")
 }

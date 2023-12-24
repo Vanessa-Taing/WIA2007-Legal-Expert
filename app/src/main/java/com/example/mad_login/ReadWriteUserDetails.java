@@ -1,6 +1,6 @@
 package com.example.mad_login;
 public class ReadWriteUserDetails {
-    public String email,doB,gender,mobile,state,name,language,barNumber,expYear,lawFirm,specialization,qualification;
+    public String email,doB,gender,mobile,state,name,language,barNumber,expYear,lawFirm,specialization,qualification,profilePictureUrl;;
     public ReadWriteUserDetails(){}
     public ReadWriteUserDetails(String email, String doB, String gender, String mobile, String state, String name, String language, String barNumber, String expYear, String lawFirm, String specialization, String qualification) {
         this.email = email;

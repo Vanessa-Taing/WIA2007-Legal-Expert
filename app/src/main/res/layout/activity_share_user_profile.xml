@@ -223,14 +223,29 @@
                     android:layout_below="@id/RL_mobile"
                     android:background="@android:color/darker_gray" />
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILCase"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="350dp"
+                    android:layout_height="56dp"
+                    android:layout_below="@id/divider_phone">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/ACTVCase"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="30dp"
+                        android:hint="Select Case"
+                        android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <!--case description-->
                 <RelativeLayout
                     android:id="@+id/RL_Case"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/divider_phone"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_below="@id/TILCase">
 
                     <ImageView
                         android:id="@+id/ic_case"
@@ -247,9 +262,15 @@
                         android:layout_alignStart="@id/ic_case"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="60dp"
                         android:hint="cases" />
                 </RelativeLayout>
+                <View
+                    android:id="@+id/divider_case"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/RL_Case"
+                    android:background="@android:color/darker_gray" />
 
                 <ProgressBar
                     android:id="@+id/progress_bar"
@@ -262,5 +283,11 @@
                     android:visibility="gone" />
             </RelativeLayout>
 
+            <Button
+                android:id="@+id/btnShareProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share Profile"
+                android:layout_gravity="center_horizontal"/>
         </LinearLayout>
     </ScrollView>

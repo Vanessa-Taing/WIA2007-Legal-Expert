@@ -74,6 +74,14 @@
                 android:layout_marginStart="145dp"
                 android:text="Share Profile"
                 android:textColor="@color/my_primary"/>
+            <TextView
+                android:id="@+id/TVCaseDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvShareProfile"
+                android:layout_marginStart="145dp"
+                android:text="Update Case Description"
+                android:textColor="@color/my_primary"/>
 
             <View
                 android:id="@+id/divider_profile"

@@ -167,12 +167,12 @@ public class lawyerPersonal_Info extends AppCompatActivity {
                 String txtEmail = ETEmail.getText().toString();
                 String txtPassword = ETPassword.getText().toString();
                 String txtConfirmPassword = ETConfirmPassword.getText().toString();
-                String txtName = ETName.getText().toString();
-                String txtBirthday = ETBirthday.getText().toString();
-                String txtPhoneNum = ETPhoneNum.getText().toString();
+                txtName = ETName.getText().toString();
+                txtBirthday = ETBirthday.getText().toString();
+                txtPhoneNum = ETPhoneNum.getText().toString();
                 String txtGender ;  //Can't obtain the value before verifying if any button was selected or not
-                String txtState = ACTVState.getText().toString();
-                String txtLanguage = ETLawyerLanguage.getText().toString();
+                txtState = ACTVState.getText().toString();
+                txtLanguage = ETLawyerLanguage.getText().toString();
 
                 if (TextUtils.isEmpty(txtEmail)) {
                     Toast.makeText(lawyerPersonal_Info.this, "Please enter your email", Toast.LENGTH_LONG).show();

@@ -3,12 +3,15 @@ package com.example.mad_login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +25,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class userProfile extends AppCompatActivity {
-    private TextView TVProfileName,TVProfileState,TVShareProfile;
+    private TextView TVProfileName,TVProfileState,TVShareProfile,TVCaseDescription;
     private ImageView ProfilePictureView;
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
     private Button btnSupport, btnSetting, btnSchedule,btnMyCase,btnLogOut;
+
+    //temporary for testing terminate cas function only
+    private Dialog terminateDialog;
+    private RadioGroup rgReason;
+    private Button btnConfirm;
+    //temporary for testing terminate cas function only
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +49,18 @@ public class userProfile extends AppCompatActivity {
         TVProfileState = findViewById(R.id.TVState);
         ProfilePictureView = findViewById(R.id.imageView_profile_dp);
         TVShareProfile=findViewById(R.id.tvShareProfile);
+        TVCaseDescription = findViewById(R.id.TVCaseDescription);
 
         TVShareProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(userProfile.this,shareUserProfile.class));
+            }
+        });
+        TVCaseDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(userProfile.this,userCaseDescription.class));
             }
         });
 
@@ -103,13 +119,31 @@ public class userProfile extends AppCompatActivity {
                 startActivity(new Intent(userProfile.this, userSetting.class));
             }
         });
-//        //go to my case
-//        btnMyCase.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(generalUserProfile.this, myCase.class));
-//            }
-//        });
+
+        //temporary for testing terminate cases only
+        DatabaseReference reasonsRef = FirebaseDatabase.getInstance().getReference("termination_reasons");
+        // Initialize dialog and UI elements for termination
+        terminateDialog = new Dialog(this);
+        terminateDialog.setContentView(R.layout.activity_terminate_session);
+
+        rgReason = terminateDialog.findViewById(R.id.rgReason);
+        btnConfirm = terminateDialog.findViewById(R.id.btnConfirm);
+
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleConfirmButtonClick();
+            }
+        });
+        //go to my case
+        btnMyCase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                terminateDialog.show(); //temporary for testing terminate function only
+//                startActivity(new Intent(userProfile.this, terminateSession.class));
+            }
+        });
+
 //
 //        //go to Schedule
 //        btnSchedule.setOnClickListener(new View.OnClickListener() {
@@ -128,24 +162,42 @@ public class userProfile extends AppCompatActivity {
 //        });
         }
 
+        //temporary for testing terminate function only
+    private void handleConfirmButtonClick() {
+        // Get selected radio button(s)
+        int selectedId = rgReason.getCheckedRadioButtonId();
 
-//    Creating ActionBar Menu
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        //Inflate menu items
-//        getMenuInflater().inflate(R.menu.common_menu,menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    //When any menu item(refresh menu) is selected
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//        if(id==R.id.menu_refresh){
-//            startActivity(getIntent());
-//            finish();
-//            overridePendingTransition(0,0); //no animation when click refresh
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+        if (selectedId != -1) {
+            RadioButton radioButton = terminateDialog.findViewById(selectedId);
+
+            // Get the selected reason
+            String selectedReason = radioButton.getText().toString();
+
+            // Save the data to Firebase
+            saveTerminationReason(selectedReason);
+
+            // Dismiss the dialog
+            terminateDialog.dismiss();
+
+        } else {
+            // Handle the case where no radio button is selected
+            Toast.makeText(this, "Please select a reason", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //temporary for testing terminate function only
+    private void saveTerminationReason(String reason) {
+        // Save the data to Firebase
+        // Replace "user_lawyer_relationships" with your actual Firebase node
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("user_lawyer_relationships");
+
+        // Replace "user_id" and "lawyer_id" with the actual user and lawyer IDs
+        // This is a simplified example, and you should replace it with your actual data structure
+        String userId = authProfile.getCurrentUser().getUid();
+        String lawyerId = "lawyer_id";
+
+        // Save the termination reason
+        databaseReference.child(userId).child(lawyerId).child("termination_reason").setValue(reason);
+        Toast.makeText(this, "Your terminate reason has been saved", Toast.LENGTH_SHORT).show();
+    }
 }
