@@ -249,16 +249,16 @@ public class lawyerProfessional_Info extends AppCompatActivity {
             databaseReference.child("Registered Lawyers").child(userId).setValue(userDetails)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(this, "You have sign up successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Your professional information has been saved", Toast.LENGTH_SHORT).show();
                             // Intent to switch to the profile page
-                            Intent intent = new Intent(this, lawyerLoginPage.class);
+                            Intent intent = new Intent(this, lawyerSuccessSignUpNotification.class);
                             startActivity(intent);
 
                             // Finish the current activity to prevent going back to it from the profile page
                             finish();
                         } else {
                             // Failed to save data
-                            Toast.makeText(this, "Failed to sign up", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Failed to save professional information", Toast.LENGTH_SHORT).show();
                         }
                     });
         }

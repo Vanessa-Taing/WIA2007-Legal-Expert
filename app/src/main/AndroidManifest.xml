@@ -20,17 +20,20 @@
         android:theme="@style/Base.Theme.LegalExpert"
         tools:targetApi="31">
         <activity
+            android:name=".lawyerSuccessSignUpNotification"
+            android:exported="true" />
+        <activity
             android:name=".caseDetails"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".lawyerDetails"
             android:exported="true" />
         <activity
             android:name=".MainActivity_2"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity_3"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".User_ChatActivity"
             android:exported="true" />
