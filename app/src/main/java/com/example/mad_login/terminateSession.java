@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ public class terminateSession extends AppCompatActivity {
 
     private Dialog terminateDialog;
     private RadioGroup rgReason;
-    private Button btnConfirm;
+    private Button btnConfirm,btnCancel;
     private FirebaseAuth authProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,14 @@ public class terminateSession extends AppCompatActivity {
 
         rgReason = terminateDialog.findViewById(R.id.rgReason);
         btnConfirm = terminateDialog.findViewById(R.id.btnConfirm);
+        btnCancel = terminateDialog.findViewById(R.id.btnCancel);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                terminateDialog.dismiss();
+            }
+        });
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
