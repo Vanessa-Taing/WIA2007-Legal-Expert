@@ -203,13 +203,13 @@
                 android:background="@drawable/baseline_help_center_24" />
 
             <Button
-                android:id="@+id/btnSupport"
+                android:id="@+id/btnFeedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/divider_Schedule"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="15dp"
-                android:text="Support"
+                android:text="Feedback"
                 android:textSize="25sp"
                 android:background="#FFFFFF"/>
 
@@ -217,9 +217,9 @@
                 android:id="@+id/TV_SupportInstruction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btnSupport"
+                android:layout_below="@id/btnFeedback"
                 android:layout_marginStart="80dp"
-                android:text="FAQ, Feedback"
+                android:text="Provide feedback on our app"
                 android:textSize="12sp" />
 
             <View

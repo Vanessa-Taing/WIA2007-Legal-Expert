@@ -1,13 +1,13 @@
 package com.example.mad_login.Model;
 
 public class User {
-    private String uid,email,name, doB, mobile,gender,state, imageURL;
+    private String uid,email,name, doB, mobile,gender,state, imageUrl;
 
     // Default constructor (required for Firebase)
     public User() {
     }
     // Constructor to initialize the user with values
-    public User(String uid, String email, String name, String doB, String mobile, String gender, String state, String imageURL) {
+    public User(String uid, String email, String name, String doB, String mobile, String gender, String state, String imageUrl) {
         this.uid = uid;
         this.email =email;
         this.name = name;
@@ -15,7 +15,7 @@ public class User {
         this.mobile = mobile;
         this.gender = gender;
         this.state = state;
-        this.imageURL = imageURL;
+        this.imageUrl = imageUrl;
     }
 
     public String getUid() {
@@ -74,11 +74,11 @@ public class User {
         this.state = state;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

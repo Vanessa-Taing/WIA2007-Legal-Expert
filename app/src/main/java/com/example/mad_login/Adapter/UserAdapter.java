@@ -63,7 +63,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         //ImageViewer setImageURI() should not be ued with regular URIs. So we are using Picasso
         Picasso.get()
-                .load(user.getImageURL())
+                .load(user.getImageUrl())
                 .placeholder(R.drawable.placeholder_image)
                 .error(R.drawable.mad_cat)
                 .into(holder.profile_image);
@@ -76,7 +76,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             public void onClick(View v) {
                 String userId = user.getUid();
                 String userName = user.getName();
-                String imageUrl = user.getImageURL();
+                String imageUrl = user.getImageUrl();
                 Log.d("UserAdapter", "Clicked on user with UID: " + userId);
 
                 if (userId != null) {

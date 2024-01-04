@@ -114,6 +114,9 @@ public class UploadProfilePic extends AppCompatActivity {
                             // Set the profilePicUri
                             profilePicUri = downloadUri.toString();
 
+                            // Update the "imageUrl" node in the database
+                            updateImageUrlInDatabase(profilePicUri);
+
                             //Pass the URI to the appropriate activity based on user type
                             backToPreviousActivity();
                         }
@@ -137,6 +140,20 @@ public class UploadProfilePic extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void updateImageUrlInDatabase(String imageUrl) {
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (firebaseUser != null) {
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users")
+                    .child(firebaseUser.getUid());
+
+            // Update the "imageUrl" node with the new URL
+            databaseReference.child("imageUrl").setValue(imageUrl);
+        }
+    }
+
+
     private void backToPreviousActivity() {
         Intent resultIntent = new Intent();
 

@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.LegalExpert"
         tools:targetApi="31">
-
+        <activity
+            android:name=".FeedbackOnApp"
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -94,7 +96,16 @@
         <activity
             android:name=".MessageActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".LawyerListActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            />
+        <activity
+            android:name=".LawyerDetailsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:parentActivityName=".LawyerListActivity"/>
     </application>
 
 </manifest>

@@ -181,7 +181,7 @@ public class login1_generalUser extends AppCompatActivity {
     //navigate to User Profile after login successfully
     private void navigateToUserProfile() {
         finish();
-        Intent intent = new Intent(login1_generalUser.this, User_ChatActivity.class);
+        Intent intent = new Intent(login1_generalUser.this, userProfile.class);
         startActivity(intent);
     }
 

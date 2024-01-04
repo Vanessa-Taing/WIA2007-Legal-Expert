@@ -26,13 +26,13 @@ public class userProfile extends AppCompatActivity {
     private ImageView ProfilePictureView;
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
-    private Button btnSupport, btnSetting, btnSchedule,btnMyCase,btnLogOut;
+    private Button btnFeedback, btnSetting, btnSchedule,btnMyCase,btnLogOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         btnLogOut =findViewById(R.id.btnLogOut);
-        btnSupport =findViewById(R.id.btnSupport);
+        btnFeedback =findViewById(R.id.btnFeedback);
         btnSetting =findViewById(R.id.btnSetting);
         btnSchedule =findViewById(R.id.btnSchedule);
         btnMyCase =findViewById(R.id.btnMyCase);
@@ -119,13 +119,13 @@ public class userProfile extends AppCompatActivity {
 //            }
 //        });
 //
-//        //go to support
-//        btnSupport.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(generalUserProfile.this, support.class));
-//            }
-//        });
+        //go to support
+        btnFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(userProfile.this, FeedbackOnApp.class));
+            }
+        });
         }
 
 

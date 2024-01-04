@@ -1,48 +1,52 @@
 package com.example.mad_login.Model;
-public class LawyerInfo {
-    private String barNumber;
-    private String expYear;
-    private String lawFirm;
-    private String specialization;
-    private String qualification;
-    private String status;
 
-    // Required default constructor for Firebase
-    public LawyerInfo() {
+import java.io.Serializable;
+
+public class LawyerInfo implements Serializable {
+    String uid, name, lawFirm, doB, expYear, specialization, gender, language, state, mobile, email, rating, imageUrl ;
+
+
+    LawyerInfo(){
+
     }
-
-    public LawyerInfo(String barNumber, String expYear, String lawFirm, String specialization, String qualification,String status) {
-        this.barNumber = barNumber;
-        this.expYear = expYear;
+    public LawyerInfo(String uid, String name, String lawFirm, String doB, String expYear, String specialization, String gender, String language, String state, String mobile, String email, String rating, String imageUrl) {
+        this.uid = uid;
+        this.name = name;
         this.lawFirm = lawFirm;
+        this.doB = doB;
+        this.expYear = expYear;
         this.specialization = specialization;
-        this.qualification = qualification;
-        this.status = status;
+        this.gender = gender;
+        this.language = language;
+        this.state = state;
+        this.mobile = mobile;
+        this.email = email;
+        this.rating = rating;
+        this.imageUrl = imageUrl;
     }
 
-    // Getter and setter methods for each field
-    public String getBarNumber() {
-        return barNumber;
+    public String getUid() {
+        return uid;
     }
 
-    public void setBarNumber(String barNumber) {
-        this.barNumber = barNumber;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
-    public String getExpYear() {
-        return expYear;
+    public String getName() {
+        return name;
     }
 
-    public void setExpYear(String expYear) {
-        this.expYear = expYear;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLawFirm() {
-        return lawFirm;
+    public String getRating() {
+        return rating;
     }
 
-    public void setLawFirm(String lawFirm) {
-        this.lawFirm = lawFirm;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public String getSpecialization() {
@@ -53,19 +57,75 @@ public class LawyerInfo {
         this.specialization = specialization;
     }
 
-    public String getQualification() {
-        return qualification;
+    public String getLawFirm() {
+        return lawFirm;
     }
 
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
+    public void setLawFirm(String lawFirm) {
+        this.lawFirm = lawFirm;
     }
 
-    public String getStatus() {
-        return status;
+    public String getDoB() {
+        return doB;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDoB(String doB) {
+        this.doB = doB;
+    }
+
+    public String getExpYear() {
+        return expYear;
+    }
+
+    public void setExpYear(String expYear) {
+        this.expYear = expYear;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

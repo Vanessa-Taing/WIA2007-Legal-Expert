@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad_login.Adapter.UserAdapter;
-import com.example.mad_login.Model.Chat;
 import com.example.mad_login.Model.User;
 import com.example.mad_login.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -143,7 +142,7 @@ public class AllChatsFragment extends Fragment {
                                             User user = new User();
                                             user.setUid(userId);
                                             user.setName(name);
-                                            user.setImageURL(imageURL != null && !imageURL.isEmpty() ? imageURL : getDefaultUserPhotoUrl());
+                                            user.setImageUrl(imageURL != null && !imageURL.isEmpty() ? imageURL : getDefaultUserPhotoUrl());
                                             mUsers.add(user);
                                         }
                                     }
@@ -207,7 +206,7 @@ public class AllChatsFragment extends Fragment {
                                                 User user = new User();
                                                 user.setUid(userId);
                                                 user.setName(name);
-                                                user.setImageURL(imageURL != null && !imageURL.isEmpty() ? imageURL : getDefaultUserPhotoUrl());
+                                                user.setImageUrl(imageURL != null && !imageURL.isEmpty() ? imageURL : getDefaultUserPhotoUrl());
                                                 mUsers.add(user);
 
                                                 // Notify the adapter of the data change

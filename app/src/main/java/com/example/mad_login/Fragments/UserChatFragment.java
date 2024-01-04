@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad_login.Adapter.UserAdapter;
-import com.example.mad_login.Model.Chat;
 import com.example.mad_login.Model.User;
 import com.example.mad_login.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -104,7 +103,7 @@ public class UserChatFragment extends Fragment {
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Registered Lawyers");
         DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference().child("Chats");
 
-                mUsers.clear(); // Clear the list before adding users
+        mUsers.clear(); // Clear the list before adding users
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -112,7 +111,7 @@ public class UserChatFragment extends Fragment {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     String userId = userSnapshot.getKey();
                     String name = userSnapshot.child("name").getValue(String.class);
-                    String imageURL = userSnapshot.child("imageURL").getValue(String.class);
+                    String imageURL = userSnapshot.child("imageUrl").getValue(String.class);
 
                     if (userId != null && !userId.equals(firebaseUser.getUid()) && name != null && !name.isEmpty()) {
                         // Convert both search text and user name to lowercase for case-insensitive comparison
@@ -143,7 +142,7 @@ public class UserChatFragment extends Fragment {
                                             User user = new User();
                                             user.setUid(userId);
                                             user.setName(name);
-                                            user.setImageURL(imageURL != null && !imageURL.isEmpty() ? imageURL : getDefaultUserPhotoUrl());
+                                            user.setImageUrl(imageURL != null && !imageURL.isEmpty() ? imageURL : getDefaultUserPhotoUrl());
                                             mUsers.add(user);
                                         }
                                     }
@@ -201,13 +200,17 @@ public class UserChatFragment extends Fragment {
                                                 (sender != null && sender.equals(userId) && receiver != null && receiver.equals(currentUserId))) {
                                             // User has messages with the current user
                                             String name = userSnapshot.child("name").getValue(String.class);
-                                            String imageURL = userSnapshot.child("imageURL").getValue(String.class);
+                                            String imageUrl = userSnapshot.child("imageUrl").getValue(String.class);
+
+                                            System.out.println("UserChatFragment: User ID: " + userId);
+                                            System.out.println("UserChatFragment: Name: " + name);
+                                            System.out.println("UserChatFragment: ImageUrl: " + imageUrl);
 
                                             if (name != null && !name.isEmpty()) {
                                                 User user = new User();
                                                 user.setUid(userId);
                                                 user.setName(name);
-                                                user.setImageURL(imageURL != null && !imageURL.isEmpty() ? imageURL : getDefaultUserPhotoUrl());
+                                                user.setImageUrl(imageUrl != null && !imageUrl.isEmpty() ? imageUrl : getDefaultUserPhotoUrl());
                                                 mUsers.add(user);
 
                                                 // Notify the adapter of the data change
