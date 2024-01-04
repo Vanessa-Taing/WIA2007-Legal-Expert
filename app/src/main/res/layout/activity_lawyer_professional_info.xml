@@ -43,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:text="Bar Number"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:id="@+id/ETBarNumber"
@@ -53,6 +54,7 @@
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" 12345678"/>
 
             <!--Law Firm-->
@@ -61,10 +63,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Law Firm"
-                android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/ETBarNumber"/>
+                android:layout_below="@id/ETBarNumber"
+                android:textColor="@android:color/black"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TILLawFirm"
@@ -81,8 +83,8 @@
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
                     android:hint="Select Your Law Firm"
-                    android:inputType="none"
-                    android:textSize="25sp" />
+                    android:textColor="@color/black"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Legal Specializations-->
@@ -91,6 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Legal Specializations"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
@@ -111,8 +114,8 @@
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
                     android:hint="Select Your Specialization"
-                    android:inputType="none"
-                    android:textSize="25sp" />
+                    android:textColor="@color/black"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Years of Experience -->
@@ -124,7 +127,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/TILSpecialization"/>
+                android:layout_below="@id/TILSpecialization"
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:id="@+id/ETExpYear"
@@ -134,6 +138,7 @@
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" 5" />
 
             <!--Qualification -->
@@ -145,7 +150,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/ETExpYear"/>
+                android:layout_below="@id/ETExpYear"
+                android:textColor="@android:color/black"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TILQualification"
@@ -162,8 +168,8 @@
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
                     android:hint="Select"
-                    android:inputType="none"
-                    android:textSize="25sp" />
+                    android:textColor="@color/black"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

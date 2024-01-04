@@ -74,7 +74,8 @@
                         android:layout_alignStart="@id/ic_profile"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
-                        android:hint="name" />
+                        android:hint="name"
+                        android:textColor="@android:color/black"/>
                 </RelativeLayout>
 
                 <View
@@ -109,7 +110,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="20dp"
-                        android:hint="email" />
+                        android:hint="email"
+                        android:textColor="@android:color/black"/>
                 </RelativeLayout>
 
                 <View
@@ -144,7 +146,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="20dp"
-                        android:hint="birthday" />
+                        android:hint="birthday"
+                        android:textColor="@android:color/black"/>
                 </RelativeLayout>
 
                 <View
@@ -179,7 +182,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="20dp"
-                        android:hint="gender" />
+                        android:hint="gender"
+                        android:textColor="@android:color/black"/>
                 </RelativeLayout>
 
                 <View
@@ -213,7 +217,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="20dp"
-                        android:hint="phone number" />
+                        android:hint="phone number"
+                        android:textColor="@android:color/black"/>
                 </RelativeLayout>
 
                 <View
@@ -234,10 +239,11 @@
                         android:id="@+id/ACTVCase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:layout_marginStart="30dp"
+                        android:layout_weight="1"
                         android:hint="Select Case"
-                        android:inputType="none"/>
+                        android:inputType="none"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!--case description-->
@@ -263,7 +269,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="60dp"
-                        android:hint="cases" />
+                        android:hint="cases"
+                        android:textColor="@android:color/black"/>
                 </RelativeLayout>
                 <View
                     android:id="@+id/divider_case"

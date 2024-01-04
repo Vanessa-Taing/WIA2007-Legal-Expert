@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:text="Name"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:id="@+id/ETName"
@@ -61,6 +62,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
                 android:hint=" Full name(as per IC/Passport)"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
 
             <!--Phone Number-->
@@ -71,6 +73,7 @@
                 android:layout_below="@id/ETName"
                 android:layout_marginTop="20dp"
                 android:text="Phone Number"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -82,6 +85,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
                 android:hint=" 011-95867400"
+                android:textColor="@android:color/black"
                 android:inputType="phone" />
 
             <!--State-->
@@ -92,6 +96,7 @@
                 android:layout_below="@id/ETPhoneNo"
                 android:layout_marginTop="20dp"
                 android:text="State"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -110,7 +115,8 @@
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
                     android:hint="Select"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--doB-->
@@ -121,6 +127,7 @@
                 android:layout_below="@id/rgGender"
                 android:layout_marginTop="20dp"
                 android:text="Date of Birth"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -132,7 +139,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
                 android:focusable="false"
-                android:hint=" Select (DD/MM/YYYY)"
+                android:hint=" Select"
+                android:textColor="@android:color/black"
                 android:inputType="date"
                 android:textSize="25sp" />
 
@@ -144,6 +152,7 @@
                 android:layout_below="@id/TILState"
                 android:layout_marginTop="20dp"
                 android:text="Gender"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -161,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textColor="#939393"
+                    android:textColor="@android:color/black"
                     android:textSize="25sp" />
 
                 <RadioButton
@@ -170,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16sp"
                     android:text="Male"
-                    android:textColor="#939393"
+                    android:textColor="@android:color/black"
                     android:textSize="25sp" />
 
             </RadioGroup>

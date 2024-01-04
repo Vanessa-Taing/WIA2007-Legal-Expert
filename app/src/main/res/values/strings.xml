@@ -1,8 +1,17 @@
 <resources>
     <string name="app_name">MAD_Login</string>
 
+    <string name="case_detail">case detail</string>
+
+    <string name="lawyer_detail">lawyer detail</string>
+
     <string-array name="caseType">
-        <item>Criminal</item>
+        <item>civil</item>
+        <item>consumer</item>
+        <item>contract</item>
+        <item>criminal</item>
+        <item>family</item>
+        <item>islamic</item>
     </string-array>
 
     <string-array name="lawFirm">
@@ -11,8 +20,12 @@
     </string-array>
 
     <string-array name="specialization">
-        <item>Family Law</item>
-        <item>other</item>
+        <item>civil</item>
+        <item>consumer</item>
+        <item>contract</item>
+        <item>criminal</item>
+        <item>family</item>
+        <item>islamic</item>
     </string-array>
 
     <string-array name="qualification">
@@ -39,4 +52,6 @@
         <item>Kedah</item>
         <item>Terengganu</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -50,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -61,11 +62,13 @@
                 android:layout_marginTop="10dp"
                 android:inputType="textPersonName"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" Full name(as per IC/Passport)"/>
 
             <!--Phone Number-->
             <TextView
                 android:id="@+id/TVPhoneNum"
+                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
@@ -81,6 +84,7 @@
                 android:layout_below="@id/TVPhoneNum"
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:inputType="phone"
                 android:hint=" 011-95867400"/>
 
@@ -92,6 +96,7 @@
                 android:layout_below="@id/TILState"
                 android:layout_marginTop="20dp"
                 android:text="Gender"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -109,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textColor="#939393"
+                    android:textColor="@android:color/black"
                     android:textSize="25sp" />
 
                 <RadioButton
@@ -118,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16sp"
                     android:text="Male"
-                    android:textColor="#939393"
+                    android:textColor="@android:color/black"
                     android:textSize="25sp" />
 
             </RadioGroup>
@@ -131,6 +136,7 @@
                 android:layout_below="@id/ETPhoneNum"
                 android:layout_marginTop="20dp"
                 android:text="State"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -139,6 +145,7 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="350dp"
                 android:layout_height="56dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/TVState">
 
@@ -148,9 +155,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
+                    android:textColor="@android:color/black"
                     android:hint="Select"
-                    android:inputType="none"
-                    android:textSize="25sp" />
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Language Spoken-->
@@ -161,6 +168,7 @@
                 android:text="Language Spoken"
                 android:textSize="25sp"
                 android:textStyle="bold"
+                android:textColor="@android:color/black"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/ETBirthday"/>
 
@@ -171,6 +179,7 @@
                 android:layout_below="@id/TVLanguage"
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" Bahasa Malaysia, English"/>
             <!--doB-->
             <TextView
@@ -181,6 +190,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Date of Birth"
                 android:textSize="25sp"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <EditText
@@ -190,16 +200,18 @@
                 android:layout_below="@id/TVDoB"
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:focusable="false"
-                android:hint=" Select (DD/MM/YYYY)"
-                android:inputType="date"
-                android:textSize="25sp" />
+                android:hint=" Select"
+                android:inputType="date" />
             <!--bar number-->
             <TextView
                 android:id="@+id/TVBarNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bar Number"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_below="@+id/ETLanguage"/>
@@ -212,7 +224,8 @@
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:background="@color/material_dynamic_neutral95"
-                android:hint=" 12345678"/>
+                android:hint=" 12345678"
+                android:textColor="@android:color/black"/>
 
             <!--Law Firm-->
             <TextView
@@ -223,7 +236,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/ETBarNumber"/>
+                android:layout_below="@id/ETBarNumber"
+                android:textColor="@android:color/black"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TILLawFirm"
@@ -239,9 +253,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
-                    android:hint="Select Your Law Firm"
-                    android:inputType="none"
-                    android:textSize="25sp" />
+                    android:hint="Select"
+                    android:textColor="@color/black"
+                    android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Legal Specializations-->
@@ -250,6 +264,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Legal Specializations"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
@@ -258,6 +273,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TILSpecialization"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:textColor="@color/black"
                 android:layout_width="350dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="10dp"
@@ -269,9 +285,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
-                    android:hint="Select Your Specialization"
-                    android:inputType="none"
-                    android:textSize="25sp" />
+                    android:hint="Select"
+                    android:textColor="@android:color/black"
+                    android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Years of Experience -->
@@ -283,7 +299,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/TILSpecialization"/>
+                android:layout_below="@id/TILSpecialization"
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:id="@+id/ETExpYear"
@@ -293,6 +310,7 @@
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" 5" />
 
             <!--Qualification -->
@@ -304,7 +322,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/ETExpYear"/>
+                android:layout_below="@id/ETExpYear"
+                android:textColor="@android:color/black"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TILQualification"
@@ -321,8 +340,8 @@
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
                     android:hint="Select"
-                    android:inputType="none"
-                    android:textSize="25sp" />
+                    android:textColor="@color/black"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Update-->

@@ -8,4 +8,6 @@
     <color name="light_grey">#A8A8A8</color>
     <color name="off_white">#FAFAFA</color>
     <color name="grey">#FFF0F0F3</color>
+    <color name="mainPurple">#7971EA</color>
+    <color name="darkPurple">#4A4687</color>
 </resources>

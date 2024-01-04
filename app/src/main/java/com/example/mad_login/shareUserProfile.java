@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -36,11 +38,14 @@ import com.itextpdf.layout.element.Paragraph;
 import com.squareup.picasso.Picasso;
 
 import com.itextpdf.layout.Document;
+import com.squareup.picasso.Target;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -48,14 +53,15 @@ public class shareUserProfile extends AppCompatActivity {
 
     private TextView TVName, TVEmail, TVDoB, TVGender, TVMobile, TVCase;
     private ProgressBar progressBar;
-    private String name, email, doB, gender, mobile, profilePictureUrl;
+    private String name, email, doB, gender, mobile, profilePictureUrl,receiverId;
     private ImageView IVProfile;
     private FirebaseUser firebaseUser;
     private FirebaseAuth authProfile;
     private AutoCompleteTextView ACTVCase;
     private ArrayAdapter<String> adapterCase;
     private Button btnShareProfile;
-    private Uri profilePictureUri; // Assume you have the URI for the profile picture
+    private Intent intent;
+    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +77,10 @@ public class shareUserProfile extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         IVProfile = findViewById(R.id.IVProfile);
         btnShareProfile = findViewById(R.id.btnShareProfile);
+
+        // Initialize UI components and retrieve receiver details
+        intent = getIntent();
+        receiverId = intent.getStringExtra("receiverUid");
         btnShareProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +90,8 @@ public class shareUserProfile extends AppCompatActivity {
 
         authProfile = FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
+
         //dropdown for case
         ACTVCase = findViewById(R.id.ACTVCase);
 
@@ -157,7 +169,9 @@ public class shareUserProfile extends AppCompatActivity {
             }
         }).addOnFailureListener(e -> {
             // Handle any errors that may occur while downloading the profile picture
-            Toast.makeText(shareUserProfile.this, "Failed to retrieve profile picture", Toast.LENGTH_LONG).show();
+            // Profile picture doesn't exist, load default profile picture
+            IVProfile.setImageResource(R.drawable.ic_baseline_account_box_24);
+            Toast.makeText(shareUserProfile.this, "default profile picture is used", Toast.LENGTH_LONG).show();
         });
     }
 
@@ -279,24 +293,67 @@ public class shareUserProfile extends AppCompatActivity {
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         StorageReference imageRef = storageRef.child("DisplayPics/" + firebaseUser.getUid() + ".jpg");
 
+        // Create a temporary file to store the profile picture
+        File localFile;
         try {
-            File localFile = File.createTempFile("profile_image", "jpg");
-
-            imageRef.getFile(localFile)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        // Image downloaded successfully
-                        // Now you can use the localFile path and proceed to create and share the profile PDF
-                        File pdfFile = createPdfFile(localFile);
-                        shareProfile(pdfFile);
-                    })
-                    .addOnFailureListener(exception -> {
-                        // Handle download failure
-                        Toast.makeText(this, "Failed to download profile picture", Toast.LENGTH_SHORT).show();
-                    });
+            localFile = File.createTempFile("profile_image", "jpg");
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Failed to create temporary file for profile picture", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Failed to create a temporary file for the profile picture", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        // Download the profile picture
+        imageRef.getFile(localFile)
+                .addOnSuccessListener(taskSnapshot -> {
+                    // Image downloaded successfully
+                    // Now you can use the localFile path and proceed to create and share the profile PDF
+                    File pdfFile = createPdfFile(localFile);
+                    shareProfile(pdfFile);
+                })
+                .addOnFailureListener(exception -> {
+                    // Handle download failure
+                    // If the profile picture doesn't exist, use the default profile picture for sharing
+                    localFile.delete(); // Delete the temporary file created for a non-existing profile picture
+                    File defaultProfilePic = new File(getCacheDir(), "default_profile_picture.jpg");
+                    try {
+                        if (!defaultProfilePic.exists()) {
+                            // Create the default profile picture file if it doesn't exist
+                            Picasso.get().load(R.drawable.ic_baseline_account_box_24).into(new Target() {
+                                @Override
+                                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                                    try {
+                                        FileOutputStream fos = new FileOutputStream(defaultProfilePic);
+                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                                        fos.flush();
+                                        fos.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    // Proceed to create and share the profile PDF with the default profile picture
+                                    File pdfFile = createPdfFile(defaultProfilePic);
+                                    shareProfile(pdfFile);
+                                }
+
+                                @Override
+                                public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+                                    // Handle failure to load the default profile picture
+                                    Toast.makeText(shareUserProfile.this, "Failed to load the default profile picture", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onPrepareLoad(Drawable placeHolderDrawable) {
+                                }
+                            });
+                        }
+                        // Proceed to create and share the profile PDF with the default profile picture
+                        File pdfFile = createPdfFile(defaultProfilePic);
+                        shareProfile(pdfFile);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(this, "Failed to download the profile picture", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private File createPdfFile(File profileImageFile) {
@@ -349,18 +406,107 @@ public class shareUserProfile extends AppCompatActivity {
     }
 
     private void shareProfile(File pdfFile) {
-        // Get the URI for the PDF file using FileProvider
-        Uri pdfUri = FileProvider.getUriForFile(this, "com.example.mad_login.fileprovider", pdfFile);
+        // Upload the PDF file to Firebase Storage or your preferred storage solution
+        // Get the URL or identifier for the stored file
+        String fileUrl = uploadPdfToStorage(pdfFile);
 
-        // Create an intent for sharing
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("application/pdf");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, pdfUri);
-
-        // Grant read permission
-        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-        // Start the sharing activity
-        startActivity(Intent.createChooser(shareIntent, "Share Profile"));
+        if (fileUrl != null) {
+            // Create a message or notification to inform the receiver about the shared file
+            sendMessageToReceiver(fileUrl);
+        } else {
+            // Handle the case where file upload fails
+            Toast.makeText(this, "Failed to share the profile", Toast.LENGTH_SHORT).show();
+        }
     }
+
+    private String uploadPdfToStorage(File pdfFile) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
+        // Generate a unique filename for the PDF file
+        String fileName = "Profile.pdf";
+
+        // Create a reference to the file in Firebase Storage
+        StorageReference pdfRef = storageRef.child("UserProfilePDFs/" + fileName);
+
+        // Upload the PDF file
+        pdfRef.putFile(Uri.fromFile(pdfFile))
+                .addOnSuccessListener(taskSnapshot -> {
+                    // File uploaded successfully
+                    // Retrieve the URL of the uploaded file
+                    pdfRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String fileUrl = uri.toString();
+                        // Now you can use the 'fileUrl' to reference the uploaded PDF file
+                        // You may want to store this URL in your database for future retrieval
+                        // (e.g., in the sendMessageToReceiver method)
+                        sendMessageToReceiver(fileUrl);
+                    }).addOnFailureListener(e -> {
+                        // Handle failure to get the download URL
+                        Toast.makeText(shareUserProfile.this, "Failed to get the download URL", Toast.LENGTH_SHORT).show();
+                    });
+                })
+                .addOnFailureListener(exception -> {
+                    // Handle failure to upload the PDF file
+                    Toast.makeText(shareUserProfile.this, "Failed to upload the PDF file", Toast.LENGTH_SHORT).show();
+                });
+
+        return fileName; // Return the unique filename (optional, based on your needs)
+    }
+
+    private void sendMessageToReceiver(String fileUrl) {
+        // Construct a message with the file URL and other details
+        HashMap<String, Object> messageMap = new HashMap<>();
+        messageMap.put("sender", firebaseUser.getUid());
+        messageMap.put("receiver", receiverId);
+        messageMap.put("messageType", "pdf"); // Indicate the type of the message
+        messageMap.put("fileUrl", fileUrl);
+        messageMap.put("timestamp", System.currentTimeMillis());
+        messageMap.put("isseen", false);
+
+        // Send the message to the "Chats" node
+        String messageId = reference.child("Chats").push().getKey();
+        reference.child("Chats").child(messageId).setValue(messageMap);
+    }
+
+    //private void shareProfile(File pdfFile) {
+    //    // Upload the PDF file to Firebase Storage
+    //    StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("UserProfilePDFs").child(pdfFile.getName());
+    //    Uri pdfUri = Uri.fromFile(pdfFile);
+    //
+    //    storageReference.putFile(pdfUri)
+    //            .addOnSuccessListener(taskSnapshot -> {
+    //                // Get the download URL of the uploaded file
+    //                storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+    //                    String pdfDownloadUrl = uri.toString();
+    //
+    //                    // Share the download URL directly with the specific user
+    //                    sendProfilePdfLink(pdfDownloadUrl);
+    //
+    //                    // Notify the user that sharing is successful
+    //                    Toast.makeText(shareUserProfile.this, "Profile shared successfully", Toast.LENGTH_SHORT).show();
+    //                }).addOnFailureListener(e -> {
+    //                    // Handle failure to get download URL
+    //                    Toast.makeText(shareUserProfile.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+    //                });
+    //            })
+    //            .addOnFailureListener(e -> {
+    //                // Handle failure to upload PDF file
+    //                Toast.makeText(shareUserProfile.this, "Failed to upload profile PDF", Toast.LENGTH_SHORT).show();
+    //            });
+    //}
+    //
+    //private void sendProfilePdfLink(String pdfDownloadUrl) {
+    //    // Create a new message containing the PDF download URL
+    //    reference = FirebaseDatabase.getInstance().getReference();
+    //    HashMap<String, Object> hashMap = new HashMap<>();
+    //    hashMap.put("sender", firebaseUser.getUid());
+    //    hashMap.put("receiver", receiverId);
+    //    hashMap.put("pdfUrl", pdfDownloadUrl);
+    //    hashMap.put("timestamp", System.currentTimeMillis());
+    //    hashMap.put("isseen", false);
+    //
+    //    // Send the message to the "Chats" node
+    //    String messageId = reference.child("Chats").push().getKey();
+    //    reference.child("Chats").child(messageId).setValue(hashMap);
+    //}
 }

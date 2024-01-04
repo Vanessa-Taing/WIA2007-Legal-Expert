@@ -42,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"/>
 
@@ -53,6 +54,7 @@
                 android:layout_marginTop="10dp"
                 android:inputType="textPersonName"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" Full name(as per IC/Passport)"/>
 
             <!--Gender-->
@@ -63,6 +65,7 @@
                 android:text="Gender"
                 android:textSize="25sp"
                 android:textStyle="bold"
+                android:textColor="@android:color/black"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/ETLawyerName"/>
 
@@ -80,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textColor="#939393"
+                    android:textColor="@android:color/black"
                     android:textSize="25sp" />
 
                 <RadioButton
@@ -89,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16sp"
                     android:text="Male"
-                    android:textColor="#939393"
+                    android:textColor="@android:color/black"
                     android:textSize="25sp" />
             </RadioGroup>
 
@@ -102,6 +105,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
                 android:layout_below="@id/rgGender"/>
 
             <EditText
@@ -112,7 +116,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
                 android:inputType="phone"
-                android:hint=" 011-95867400"/>
+                android:hint=" 011-95867400"
+                android:textColor="@android:color/black"/>
 
             <!--Email-->
             <TextView
@@ -123,6 +128,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
                 android:layout_below="@id/ETLawyerPhoneNo"/>
 
             <EditText
@@ -133,6 +139,7 @@
                 android:layout_below="@id/TVLawyerEmail"
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" Enter Your Email"/>
 
             <!--Date Of Birth-->
@@ -144,6 +151,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
                 android:layout_below="@id/ETLawyerEmail"/>
 
             <EditText
@@ -154,6 +162,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
                 android:hint=" Select your date of birth(DD/MM/YYYY)"
+                android:textColor="@android:color/black"
                 android:inputType="date"
                 android:focusable="false"/>
 
@@ -166,7 +175,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/ETLawyerDoB"/>
+                android:layout_below="@id/ETLawyerDoB"
+                android:textColor="@android:color/black"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TILLayerState"
@@ -184,7 +194,7 @@
                     android:background="@color/material_dynamic_neutral95"
                     android:hint="State"
                     android:inputType="none"
-                    android:textSize="25sp" />
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Language Spoken-->
@@ -196,7 +206,8 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/TILLayerState"/>
+                android:layout_below="@id/TILLayerState"
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:id="@+id/ETLawyerLanguage"
@@ -205,6 +216,7 @@
                 android:layout_below="@id/TVLawyerLanguage"
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint=" Bahasa Malaysia, English"/>
 
             <!--Password-->
@@ -216,6 +228,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
                 android:layout_below="@id/ETLawyerLanguage"/>
 
             <EditText
@@ -226,11 +239,13 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
                 android:inputType="textPassword"
+                android:textColor="@android:color/black"
                 android:hint="  Enter Your Password"/>
 
             <!--Confirm Password-->
             <TextView
                 android:id="@+id/TVLawyerConfirmPwd"
+                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Confirm Password"
@@ -241,6 +256,7 @@
 
             <EditText
                 android:id="@+id/ETLawyerConfirmPwd"
+                android:textColor="@android:color/black"
                 android:layout_width="350dp"
                 android:layout_height="56dp"
                 android:layout_below="@id/TVLawyerConfirmPwd"

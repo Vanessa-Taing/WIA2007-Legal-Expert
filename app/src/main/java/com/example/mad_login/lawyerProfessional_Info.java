@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class lawyerProfessional_Info extends AppCompatActivity {
     private EditText ETBarNumber,ETExpYear;
     private String[] lawFirm = {"LING & THENG BOOK","other"};
-    private String[] specialization = {"Family Law","other"};
+    private String[] specialization = {"civil","consumer" , "contract", "criminal" , "family" ,"islamic"};
     private String[] qualification ={"CERTIFICATE IN LEGAL PRACTICE(CLP)","other"};
     private AutoCompleteTextView ACTVLawFirm,ACTVSpecialization,ACTVQualification;
     private ArrayAdapter<String> adapterLawFirm,adapterSpecialization,adapterQualification;
@@ -249,7 +249,7 @@ public class lawyerProfessional_Info extends AppCompatActivity {
             databaseReference.child("Registered Lawyers").child(userId).setValue(userDetails)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(this, "Professional Info saved to Firebase", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "You have sign up successfully", Toast.LENGTH_LONG).show();
                             // Intent to switch to the profile page
                             Intent intent = new Intent(this, lawyerLoginPage.class);
                             startActivity(intent);
@@ -258,7 +258,7 @@ public class lawyerProfessional_Info extends AppCompatActivity {
                             finish();
                         } else {
                             // Failed to save data
-                            Toast.makeText(this, "Failed to save Professional Info to Firebase", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Failed to sign up", Toast.LENGTH_SHORT).show();
                         }
                     });
         }

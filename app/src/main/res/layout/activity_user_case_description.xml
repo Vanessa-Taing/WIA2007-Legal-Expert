@@ -50,6 +50,7 @@
                 android:id="@+id/TVCaseName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:text="Case Name"
                 android:textSize="25dp"
                 android:textStyle="bold" />
@@ -61,6 +62,7 @@
                 android:layout_below="@id/TVCaseName"
                 android:layout_marginTop="10dp"
                 android:background="@color/material_dynamic_neutral95"
+                android:textColor="@android:color/black"
                 android:hint="  provide simple case name" />
 
             <ProgressBar
@@ -81,6 +83,7 @@
                 android:layout_marginTop="30dp"
                 android:text="Case Type"
                 android:textSize="25dp"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -97,7 +100,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/material_dynamic_neutral95"
-                    android:hint="Criminal"
+                    android:hint="Select"
+                    android:textColor="@color/black"
                     android:inputType="none"
                     android:textSize="25sp"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -111,6 +115,7 @@
                 android:layout_marginTop="30dp"
                 android:text="Case Description"
                 android:textSize="25dp"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <EditText
@@ -120,7 +125,8 @@
                 android:layout_below="@+id/TVCaseDescription"
                 android:layout_marginTop="20dp"
                 android:background="@color/material_dynamic_neutral95"
-                android:hint="  Explain your case here" />
+                android:hint="  Explain your case here"
+                android:textColor="@android:color/black"/>
 
             <!--Upload document-->
             <com.google.android.material.textfield.TextInputLayout
@@ -135,6 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="File Name"
+                    android:textColor="@android:color/black"
                     android:background="@drawable/shape"
                     android:textSize="22sp"
                     android:textColorHint="@color/black"

@@ -4,6 +4,5 @@
     android:layout_height="wrap_content"
     android:text="TextView"
     android:padding="14dp"
-    android:textColor="#686666"
-    android:textSize="25sp"
+    android:textSize="20sp"
     android:textStyle="bold"/>

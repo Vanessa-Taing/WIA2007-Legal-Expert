@@ -39,7 +39,7 @@ import java.util.Objects;
 public class userCaseDescription extends AppCompatActivity {
 
     private static final int UPLOAD_DOC_REQUEST_CODE = 1;
-    private String[] caseType = {"Criminal", "Sexual Assault", "Domestic Violence", "Divorce", "Contract", "Bankruptcy"};
+    private String[] caseType = {"civil", "consumer" , "contract", "criminal" , "family" ,"islamic"};
     private AutoCompleteTextView ACTVCaseType;
     private ArrayAdapter<String> adapterCaseType;
     private EditText ETCaseName, ETCaseDescription, etFileName;

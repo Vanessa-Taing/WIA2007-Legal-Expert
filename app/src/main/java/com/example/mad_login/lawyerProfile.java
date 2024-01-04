@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class lawyerProfile extends AppCompatActivity {
+    private BottomNavigationView bottomNavigationView;
     private Button btnYourRating, btnSetting, btnSchedule,btnCaseHistory,btnLogOut;
     private TextView TVProfileName,TVSpecialise;
     private ImageView IVProfilePic;
@@ -42,6 +46,8 @@ public class lawyerProfile extends AppCompatActivity {
 
         //set onclick when lawyer click profile pic
         IVProfilePic = findViewById(R.id.imageView_profile_dp);
+        // Set default profile picture
+        IVProfilePic.setImageResource(R.drawable.ic_baseline_account_box_24);
 
         authProfile =FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
@@ -63,11 +69,12 @@ public class lawyerProfile extends AppCompatActivity {
                     TVProfileName.setText(name);
                     TVSpecialise.setText("Specialise in "+specialization);
 
-                    //set user DP (After user has uploaded)
-                    Uri uri = firebaseUser.getPhotoUrl();
-
-                    //ImageViewer setImageURI() should not be ued with regular URIs. So we are using Picasso
-                    Picasso.get().load(uri).into(IVProfilePic);
+                    // Check if the user has a profile picture
+                    if (firebaseUser.getPhotoUrl() != null) {
+                        // Load the uploaded profile picture using Picasso
+                        Uri uri = firebaseUser.getPhotoUrl();
+                        Picasso.get().load(uri).into(IVProfilePic);
+                    }
                 } else{
                 Toast.makeText(lawyerProfile.this, "Something went wrong!", Toast.LENGTH_LONG).show();
             }
@@ -86,7 +93,7 @@ public class lawyerProfile extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 finish();
-                startActivity(new Intent(lawyerProfile.this,  MainActivity.class));
+                startActivity(new Intent(lawyerProfile.this,  SplashActivity.class));
             }
         });
 
@@ -97,6 +104,23 @@ public class lawyerProfile extends AppCompatActivity {
                 startActivity(new Intent(lawyerProfile.this, lawyerSetting.class));
             }
         });
+
+//        bottomNavigationView = findViewById(R.id.bottom_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.menu_home);
+//        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                int itemId = item.getItemId();
+//                if (itemId == R.id.menu_home) {
+//                    return true;
+//                } else if (itemId == R.id.menu_cases) {
+//                    startActivity(new Intent(getApplicationContext(), MainActivity_3.class));
+//                    finish();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 //
 //        //go to case history
 //        btnCaseHistory.setOnClickListener(new View.OnClickListener() {

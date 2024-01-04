@@ -55,7 +55,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_box">
 
                     <ImageView
                         android:id="@+id/IVProfile"
@@ -65,13 +66,12 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/TVChangeProfile"
                         android:layout_below="@id/IVProfile"
-                        android:text="Change Profile"
+                        android:text="Change Profile Picture"
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -94,8 +94,7 @@
                         android:layout_below="@+id/TVChangeProfile"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        android:text="Change Email"
-                        android:backgroundTint="@color/my_secondary"/>
+                        android:text="Change Email" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>

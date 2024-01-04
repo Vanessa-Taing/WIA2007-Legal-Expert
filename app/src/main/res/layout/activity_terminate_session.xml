@@ -20,6 +20,7 @@
             android:layout_marginBottom="25dp"
             android:layout_centerHorizontal="true"
             android:text="Select Terminal Reason"
+            android:textColor="@android:color/black"
             android:textSize="25sp"
             android:textStyle="bold"
             />
@@ -63,29 +64,36 @@
                 android:id="@+id/rbCaseResolved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Case resolved" />
+                android:text="Case resolved"
+                android:textColor="@android:color/black"/>
 
             <RadioButton
                 android:id="@+id/rbNoNeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No longer needed" />
+                android:text="No longer needed"
+                android:textColor="@android:color/black"/>
 
             <RadioButton
                 android:id="@+id/rbChangeLawyer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change lawyer" />
+                android:text="Change lawyer"
+                android:textColor="@android:color/black"/>
+
             <RadioButton
                 android:id="@+id/rbFinancial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Financial reason" />
+                android:text="Financial reason"
+                android:textColor="@android:color/black"/>
+
             <RadioButton
                 android:id="@+id/rbOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Other / Change my mind" />
+                android:text="Other / Change my mind"
+                android:textColor="@android:color/black"/>
         </RadioGroup>
 
         <Button

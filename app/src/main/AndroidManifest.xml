@@ -20,10 +20,38 @@
         android:theme="@style/Base.Theme.LegalExpert"
         tools:targetApi="31">
         <activity
-            android:name=".terminateSession"
-            android:exported="false" >
+            android:name=".caseDetails"
+            android:exported="false" />
+        <activity
+            android:name=".lawyerDetails"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity_2"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_3"
+            android:exported="false" />
+        <activity
+            android:name=".User_ChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MessageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".lawyer_ChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".terminateSession"
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -46,13 +74,7 @@
             android:exported="true" />
         <activity
             android:name=".login_selectRole"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".lawyerLoginPage"
             android:exported="true" />
@@ -86,9 +108,6 @@
         <activity
             android:name=".userProfile"
             android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
         <activity
             android:name=".login1_generalUser"
             android:exported="true" />

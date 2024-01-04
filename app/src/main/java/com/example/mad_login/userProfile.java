@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +16,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +33,7 @@ public class userProfile extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
     private Button btnSupport, btnSetting, btnSchedule,btnMyCase,btnLogOut;
+    private BottomNavigationView bottomNavigationView;
 
     //temporary for testing terminate cas function only
     private Dialog terminateDialog;
@@ -48,6 +52,9 @@ public class userProfile extends AppCompatActivity {
         TVProfileName =findViewById(R.id.TVProfileName);
         TVProfileState = findViewById(R.id.TVState);
         ProfilePictureView = findViewById(R.id.imageView_profile_dp);
+        // Set default profile picture
+        ProfilePictureView.setImageResource(R.drawable.ic_baseline_account_box_24);
+
         TVShareProfile=findViewById(R.id.tvShareProfile);
         TVCaseDescription = findViewById(R.id.TVCaseDescription);
 
@@ -84,11 +91,13 @@ public class userProfile extends AppCompatActivity {
                     TVProfileName.setText(name);
                     TVProfileState.setText("Based in "+userState);
 
-                    //set user DP (After user has uploaded)
-                    Uri uri = firebaseUser.getPhotoUrl();
+                    // Check if the user has a profile picture
+                    if (firebaseUser.getPhotoUrl() != null) {
+                        // Load the uploaded profile picture using Picasso
+                        Uri uri = firebaseUser.getPhotoUrl();
+                        Picasso.get().load(uri).into(ProfilePictureView);
+                    }
 
-                    //ImageViewer setImageURI() should not be ued with regular URIs. So we are using Picasso
-                    Picasso.get().load(uri).into(ProfilePictureView);
                 }else{
                     Toast.makeText(userProfile.this, "Something went wrong!", Toast.LENGTH_LONG).show();
                 }
@@ -107,7 +116,7 @@ public class userProfile extends AppCompatActivity {
             public void onClick(View v) {
                 authProfile.signOut();
                 finish();
-                startActivity(new Intent(userProfile.this,MainActivity.class));
+                startActivity(new Intent(userProfile.this,SplashActivity.class));
                 Toast.makeText(userProfile.this,"Logged Out",Toast.LENGTH_LONG).show();
             }
         });
@@ -135,6 +144,36 @@ public class userProfile extends AppCompatActivity {
                 handleConfirmButtonClick();
             }
         });
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.menu_home);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.menu_home) {
+                    return true;
+                } else if (itemId == R.id.menu_cases) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity_3.class));
+                    finish();
+                    return true;
+                }  else if (itemId == R.id.menu_lawyer) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity_2.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.menu_profile) {
+                    startActivity(new Intent(getApplicationContext(), userProfile.class));
+                    finish();
+                    return true;
+                }else if (itemId == R.id.menu_chat) {
+                    startActivity(new Intent(getApplicationContext(), MessageActivity.class));
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         //go to my case
         btnMyCase.setOnClickListener(new View.OnClickListener() {
             @Override
