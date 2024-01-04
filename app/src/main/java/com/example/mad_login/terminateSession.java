@@ -65,8 +65,8 @@ public class terminateSession extends AppCompatActivity {
             // Get the selected reason
             String selectedReason = radioButton.getText().toString();
 
-            // Save the data to Firebase
-            saveTerminationReason(selectedReason);
+//            // Save the data to Firebase
+//            saveTerminationReason(selectedReason);
 
             // Dismiss the dialog
             terminateDialog.dismiss();
@@ -77,46 +77,18 @@ public class terminateSession extends AppCompatActivity {
         }
     }
 
-    private void saveTerminationReason(String reason) {
-        // Save the data to Firebase
-        // Replace "user_lawyer_relationships" with your actual Firebase node
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("user_lawyer_relationships");
-
-        // Replace "user_id" and "lawyer_id" with the actual user and lawyer IDs
-        // This is a simplified example, and you should replace it with your actual data structure
-        String userId = authProfile.getCurrentUser().getUid();
-        String lawyerId = "lawyer_id";
-
-        // Save the termination reason
-        databaseReference.child(userId).child(lawyerId).child("termination_reason").setValue(reason);
-        Toast.makeText(this, "Your terminate reason has been saved", Toast.LENGTH_SHORT).show();
-    }
-
-//    terminate relationship, save reason, terminate chat function
-//    private void terminateRelationship(String userId, String lawyerId,String reason) {
-//        // Update the 'terminated' flag for the chats between the user and lawyer
-//        DatabaseReference chatReference = FirebaseDatabase.getInstance().getReference().child("Chats");
+//    private void saveTerminationReason(String reason) {
+//        // Save the data to Firebase
+//        // Replace "user_lawyer_relationships" with your actual Firebase node
 //        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("user_lawyer_relationships");
+//
+//        // Replace "user_id" and "lawyer_id" with the actual user and lawyer IDs
+//        // This is a simplified example, and you should replace it with your actual data structure
+//        String userId = authProfile.getCurrentUser().getUid();
+//        String lawyerId = "lawyer_id";
 //
 //        // Save the termination reason
 //        databaseReference.child(userId).child(lawyerId).child("termination_reason").setValue(reason);
 //        Toast.makeText(this, "Your terminate reason has been saved", Toast.LENGTH_SHORT).show();
-//        chatReference.orderByChild("sender_receiver").equalTo(userId + "_" + lawyerId).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    Chat chat = snapshot.getValue(Chat.class);
-//                    if (chat != null) {
-//                        chat.setTerminated(true);
-//                        snapshot.getRef().setValue(chat);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Log.e("MessageActivity", "Error terminating relationship", error.toException());
-//            }
-//        });
 //    }
 }
