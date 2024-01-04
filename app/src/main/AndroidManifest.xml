@@ -83,7 +83,7 @@
             android:exported="true" />
         <activity
             android:name=".shareUserProfile"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".UploadProfilePic"
             android:exported="true" />

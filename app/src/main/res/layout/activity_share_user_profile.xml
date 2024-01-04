@@ -29,17 +29,6 @@
                     android:layout_marginTop="71dp"
                     android:layout_marginEnd="134dp"
                     android:scaleType="centerCrop" />
-
-                <ProgressBar
-                        android:id="@+id/progressBar"
-                        style="?android:attr/progressBarStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="110dp"
-                        android:layout_centerHorizontal="true"
-                        android:elevation="10dp"
-                        android:visibility="gone" />
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -130,6 +119,14 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"
+                        />
                     <ImageView
                         android:id="@+id/ic_dob"
                         android:layout_width="25dp"

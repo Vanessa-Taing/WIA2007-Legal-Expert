@@ -31,7 +31,8 @@
             android:padding="8dp"
             android:text="hello"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColorLink="@color/blue"/>
 
         <TextView
             android:id="@+id/tv_time"

@@ -1,6 +1,13 @@
 package com.example.mad_login.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,15 +60,21 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         Chat chat = mChat.get(position);
 
         if (chat != null) {
-            holder.show_message.setText(chat.getMessage());
-            holder.tvTime.setText(getFormattedTime(chat.getTimestamp()));
+            // Check if the message contains a link
+            if (mChat.get(position).getMessage().contains("click this link to see my profile:")) {
+                // If it's a link, set HTML text and make the entire message clickable
+                String messageWithLink = mChat.get(position).getMessage();
+                Spanned spannedText = Html.fromHtml(messageWithLink);
 
-            // Check if the current message is the first one or has a different date
-            if (position == 0 || isDifferentDay(chat.getTimestamp(), mChat.get(position - 1).getTimestamp())) {
-                holder.tvDate.setVisibility(View.VISIBLE);
-                holder.tvDate.setText(getFormattedDate(chat.getTimestamp()));
+                // Make the link clickable
+                SpannableStringBuilder ssb = addClickablePart(spannedText, holder.show_message, messageWithLink);
+                holder.show_message.setText(ssb);
+
+                // Set movement method to make the link clickable
+                holder.show_message.setMovementMethod(LinkMovementMethod.getInstance());
             } else {
-                holder.tvDate.setVisibility(View.GONE);
+                // If it's a regular message without a link, set plain text
+                holder.show_message.setText(mChat.get(position).getMessage());
             }
         }
 
@@ -75,6 +88,39 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             holder.txt_seen.setVisibility(View.GONE);
         }
     }
+    private SpannableStringBuilder addClickablePart(Spanned strSpanned, TextView textView, String fullMessage) {
+        String str = strSpanned.toString();
+        SpannableStringBuilder ssb = new SpannableStringBuilder(strSpanned);
+
+        // Find the position of the link
+        String linkPrefix = "click this link to see my profile: ";
+        int startIdx = str.indexOf(linkPrefix) + linkPrefix.length();
+        int endIdx = fullMessage.length();
+
+        // Set a ClickableSpan to handle the click event
+        ssb.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                // Handle the click event, e.g., open the link
+                String url = extractUrlFromMessage(fullMessage);
+                if (url != null) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    textView.getContext().startActivity(intent);
+                }
+            }
+        }, startIdx, endIdx, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        return ssb;
+    }
+
+    private String extractUrlFromMessage(String message) {
+        // Extract the URL from the message
+        String prefix = "click this link to see my profile: ";
+        int startIdx = message.indexOf(prefix) + prefix.length();
+        return message.substring(startIdx);
+    }
+
+    //done with clickable link
 
 
     private String getFormattedDate(long timestamp) {
@@ -124,3 +170,4 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         }
     }
 }
+

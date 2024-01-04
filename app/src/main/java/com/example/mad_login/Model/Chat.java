@@ -6,7 +6,6 @@ public class Chat {
     private String message;
     private boolean isseen;
     private long timestamp;
-    private boolean terminated;
 
     public Chat() {
     }
@@ -57,13 +56,5 @@ public class Chat {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public boolean isTerminated() {
-        return terminated;
-    }
-
-    public void setTerminated(boolean terminated) {
-        this.terminated = terminated;
     }
 }

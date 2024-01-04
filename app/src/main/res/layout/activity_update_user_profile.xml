@@ -141,8 +141,7 @@
                 android:focusable="false"
                 android:hint=" Select"
                 android:textColor="@android:color/black"
-                android:inputType="date"
-                android:textSize="25sp" />
+                android:inputType="date" />
 
             <!--gender-->
             <TextView
@@ -170,8 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textColor="@android:color/black"
-                    android:textSize="25sp" />
+                    android:textColor="@android:color/black" />
 
                 <RadioButton
                     android:id="@+id/radio_male"
@@ -179,8 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16sp"
                     android:text="Male"
-                    android:textColor="@android:color/black"
-                    android:textSize="25sp" />
+                    android:textColor="@android:color/black" />
 
             </RadioGroup>
 

@@ -52,7 +52,7 @@
                 android:text="Wong Huan Huan"
                 android:layout_marginStart="140dp"
                 android:layout_marginTop="30dp"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 />
@@ -66,23 +66,6 @@
                 android:layout_below="@id/TVProfileName"
                 android:layout_marginStart="145dp"
                 android:textColor="#6A6969"/>
-
-            <TextView
-                android:id="@+id/tvShareProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/TVState"
-                android:layout_marginStart="145dp"
-                android:text="Share Profile"
-                android:textColor="@color/my_primary"/>
-            <TextView
-                android:id="@+id/TVCaseDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvShareProfile"
-                android:layout_marginStart="145dp"
-                android:text="Update Case Description"
-                android:textColor="@color/my_primary"/>
 
             <View
                 android:id="@+id/divider_profile"

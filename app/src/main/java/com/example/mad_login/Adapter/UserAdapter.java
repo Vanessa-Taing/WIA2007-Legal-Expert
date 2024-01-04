@@ -2,6 +2,7 @@ package com.example.mad_login.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.example.mad_login.MessageActivity;
 import com.example.mad_login.Model.Chat;
 import com.example.mad_login.Model.User;
 import com.example.mad_login.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -33,13 +38,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicReference;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
     private Context mContext;
     private List<User> mUsers;
-
-    private FirebaseUser firebaseUser;
     String theLastMessage;
 
 
@@ -58,18 +63,37 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = mUsers.get(position);
-
         holder.username.setText(user.getName());
 
-        //ImageViewer setImageURI() should not be ued with regular URIs. So we are using Picasso
-        Picasso.get()
-                .load(user.getImageURL())
-                .placeholder(R.drawable.placeholder_image)
-                .error(R.drawable.mad_cat)
-                .into(holder.profile_image);
+        //set receiver's profile image and set it to profile_image
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://legalexpert-2ff12.appspot.com/");
 
-        // Call lastMessage to set the last message for this user
+        // Load the default profile picture using holder.profile_image
+        holder.profile_image.setImageResource(R.drawable.ic_baseline_account_box_24);
+
+        // Get a reference to the receiver's image
+        StorageReference receiverImageRef = storageRef.child("DisplayPics/" + user.getUid() + ".jpg");
+
+        // Get the download URL
+        receiverImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Load the uploaded profile picture using Picasso into holder.profile_image
+                Picasso.get().load(uri).into(holder.profile_image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@androidx.annotation.NonNull Exception exception) {
+                // Handle any errors
+                Log.e("UserAdapter", "Error loading profile picture", exception);
+            }
+        });
+
+        // Call lastMessage using holder
         lastMessage(user.getUid(), holder.last_message, holder.time_stamp, holder.unread_message_bubble, holder.unread_message_count);
+
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,19 +157,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
-                    if (chat != null) {
-                        if (!chat.isIsseen() && chat.getReceiver() != null && chat.getSender() != null
-                                && chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid)) {
-                            // Check if the message is unread
-                            unreadCount++;
-                        }
-                        if (chat.getReceiver() != null && chat.getSender() != null &&
-                                (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid) ||
-                                        chat.getReceiver().equals(userid) && chat.getSender().equals(firebaseUser.getUid()))) {
-                            // Set the lastChat when a matching message is found
-                            lastChat.set(chat);
-                            theLastMessage = chat.getMessage();
-                        }
+                    if (chat != null && !chat.isIsseen() && chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid)) {
+                        // Check if the message is unread
+                        unreadCount++;
+                    }
+                    if (chat != null && (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid) ||
+                            chat.getReceiver().equals(userid) && chat.getSender().equals(firebaseUser.getUid()))) {
+                        // Set the lastChat when a matching message is found
+                        lastChat.set(chat);
+                        theLastMessage = chat.getMessage();
                     }
                 }
 

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad_login.Adapter.UserAdapter;
+import com.example.mad_login.Model.Chat;
 import com.example.mad_login.Model.User;
 import com.example.mad_login.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +35,6 @@ public class UserChatFragment extends Fragment {
     private RecyclerView UserRecyclerView;
     private UserAdapter userAdapter;
     private List<User> mUsers;
-    private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
     private EditText search_users;
     private ImageView cancelSearch;

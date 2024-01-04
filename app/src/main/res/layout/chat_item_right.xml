@@ -33,6 +33,7 @@
             android:padding="8dp"
             android:text="hello"
             android:textColor="@color/black"
+            android:textColorLink="@color/blue"
             android:textSize="18sp" />
 
         <TextView

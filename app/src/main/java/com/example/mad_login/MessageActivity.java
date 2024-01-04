@@ -1,6 +1,8 @@
 package com.example.mad_login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad_login.Adapter.MessageAdapter;
 import com.example.mad_login.Model.Chat;
+import com.example.mad_login.Model.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +28,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Callback;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,14 +45,13 @@ public class MessageActivity extends AppCompatActivity {
     TextView username;
     RecyclerView recyclerView;
     EditText messageInput;
-    ImageButton btn_send;
+    ImageButton btn_send,btn_share_profile;
 
     FirebaseUser currentUser;
     DatabaseReference reference;
 
     MessageAdapter messageAdapter;
     List<Chat> mchat;
-
     Intent intent;
     ValueEventListener seenListener;
 
@@ -74,7 +81,7 @@ public class MessageActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         btn_send = findViewById(R.id.btn_send);
         messageInput = findViewById(R.id.messageInput);
-        ImageButton btnShareProfile = findViewById(R.id.btn_share_profile);
+        btn_share_profile =findViewById(R.id.btn_share_profile);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
@@ -82,16 +89,38 @@ public class MessageActivity extends AppCompatActivity {
         intent = getIntent();
         String receiverId = intent.getStringExtra("userid");
         String receiverName = intent.getStringExtra("username");
-        String receiverImageUrl = intent.getStringExtra("imageUrl");
 
-        //share user profile
-        btnShareProfile.setOnClickListener(new View.OnClickListener() {
+        btn_share_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navigateToShareProfileActivity(receiverId);
             }
         });
 
+        //set receiver's profile image and set it to profile_image
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://legalexpert-2ff12.appspot.com/");
+
+        // Get a reference to the receiver's image
+        StorageReference receiverImageRef = storageRef.child("DisplayPics/" + receiverId + ".jpg");
+
+        // Load the default profile picture
+        profile_image.setImageResource(R.drawable.ic_baseline_account_box_24);
+
+        // Get the download URL
+        receiverImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Load the uploaded profile picture using Picasso
+                Picasso.get().load(uri).into(profile_image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                Log.e("MessageActivity", "Error loading profile picture", exception);
+            }
+        });
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,27 +135,48 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-
         reference.child(receiverId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 username.setText(receiverName);
-                Picasso.get().load(receiverImageUrl).into(profile_image);
 
                 // Read messages after setting up the user details
                 readMessages(receiverId, currentUser.getUid());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("MessageActivity", "Error reading user details", error.toException());
             }
         });
-
         seenMessage(receiverId);
     }
 
-    // Modify the sendMessage method to include profile sharing logic
+    private void seenMessage(String userid) {
+        reference = FirebaseDatabase.getInstance().getReference().child("Chats");
+        seenListener = reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Chat chat = snapshot.getValue(Chat.class);
+                    if (chat.getReceiver().equals(currentUser.getUid()) && chat.getSender().equals(userid)) {
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("isseen", true);
+                        snapshot.getRef().updateChildren(hashMap);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void navigateToShareProfileActivity(String receiverUid) {
+        Intent intent = new Intent(MessageActivity.this, shareUserProfile.class);
+        intent.putExtra("receiverUid", receiverUid);
+        startActivity(intent);
+    }
     private void sendMessage(String sender, String receiver, String message) {
         reference = FirebaseDatabase.getInstance().getReference();
 
@@ -137,42 +187,10 @@ public class MessageActivity extends AppCompatActivity {
         hashMap.put("timestamp", System.currentTimeMillis());
         hashMap.put("isseen", false);
 
-        // Send the message to the "Chats" node
-        String messageId = reference.child("Chats").push().getKey();
-        reference.child("Chats").child(messageId).setValue(hashMap);
+        reference.child("Chats").push().setValue(hashMap);
+
     }
 
-    // Method to initiate profile sharing
-    private void navigateToShareProfileActivity(String receiverUid) {
-        Intent intent = new Intent(MessageActivity.this, shareUserProfile.class);
-        intent.putExtra("receiverUid", receiverUid);
-        startActivity(intent);
-    }
-
-
-    private void seenMessage(String userid) {
-        reference = FirebaseDatabase.getInstance().getReference().child("Chats");
-        seenListener = reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Chat chat = snapshot.getValue(Chat.class);
-                    if (chat != null && chat.getReceiver() != null && chat.getSender() != null && !chat.isTerminated()) {
-                        if (chat.getReceiver().equals(currentUser.getUid()) && chat.getSender().equals(userid)) {
-                            HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put("isseen", true);
-                            snapshot.getRef().updateChildren(hashMap);
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("MessageActivity", "Error seeing messages", error.toException());
-            }
-        });
-    }
 
     private void readMessages(String currentUserId, String receiverId) {
         mchat = new ArrayList<>();
@@ -188,7 +206,7 @@ public class MessageActivity extends AppCompatActivity {
                     Chat chat = snapshot.getValue(Chat.class);
                     if (chat != null) {
                         if (chat.getReceiver().equals(currentUserId) && chat.getSender().equals(receiverId) ||
-                                chat.getReceiver().equals(receiverId) && chat.getSender().equals(currentUserId)&& !chat.isTerminated()) {
+                                chat.getReceiver().equals(receiverId) && chat.getSender().equals(currentUserId)) {
                             mchat.add(chat);
                         }
                     }
@@ -204,4 +222,5 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
+
 }

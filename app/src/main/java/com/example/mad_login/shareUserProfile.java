@@ -3,7 +3,6 @@ package com.example.mad_login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -285,6 +284,7 @@ public class shareUserProfile extends AppCompatActivity {
     }
 
     private void shareUserProfile() {
+        progressBar.setVisibility(View.VISIBLE);
         // Retrieve the profile picture directly into the PDF
         retrieveProfilePictureForSharing();
     }
@@ -406,107 +406,60 @@ public class shareUserProfile extends AppCompatActivity {
     }
 
     private void shareProfile(File pdfFile) {
-        // Upload the PDF file to Firebase Storage or your preferred storage solution
-        // Get the URL or identifier for the stored file
-        String fileUrl = uploadPdfToStorage(pdfFile);
+        progressBar.setVisibility(View.VISIBLE);
 
-        if (fileUrl != null) {
-            // Create a message or notification to inform the receiver about the shared file
-            sendMessageToReceiver(fileUrl);
-        } else {
-            // Handle the case where file upload fails
-            Toast.makeText(this, "Failed to share the profile", Toast.LENGTH_SHORT).show();
-        }
-    }
+        // Upload the PDF file to Firebase Storage
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("UserProfilePDFs").child(pdfFile.getName());
+        Uri pdfUri = Uri.fromFile(pdfFile);
 
-    private String uploadPdfToStorage(File pdfFile) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-
-        // Generate a unique filename for the PDF file
-        String fileName = "Profile.pdf";
-
-        // Create a reference to the file in Firebase Storage
-        StorageReference pdfRef = storageRef.child("UserProfilePDFs/" + fileName);
-
-        // Upload the PDF file
-        pdfRef.putFile(Uri.fromFile(pdfFile))
+        storageReference.putFile(pdfUri)
                 .addOnSuccessListener(taskSnapshot -> {
-                    // File uploaded successfully
-                    // Retrieve the URL of the uploaded file
-                    pdfRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                        String fileUrl = uri.toString();
-                        // Now you can use the 'fileUrl' to reference the uploaded PDF file
-                        // You may want to store this URL in your database for future retrieval
-                        // (e.g., in the sendMessageToReceiver method)
-                        sendMessageToReceiver(fileUrl);
+                    // Get the download URL of the uploaded file
+                    storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String pdfDownloadUrl = uri.toString();
+
+                        // Automatically write a message with a brief description
+                        String message = "Hi, click this link to see my profile: " + pdfDownloadUrl;
+                        sendMessageWithDescription(message);
+
+                        // Hide the progress bar when the operation is completed
+                        progressBar.setVisibility(View.GONE);
+
+                        // Notify the user that sharing is successful
+                        Toast.makeText(shareUserProfile.this, "Profile shared successfully", Toast.LENGTH_SHORT).show();
                     }).addOnFailureListener(e -> {
-                        // Handle failure to get the download URL
-                        Toast.makeText(shareUserProfile.this, "Failed to get the download URL", Toast.LENGTH_SHORT).show();
+                        // Handle failure to get download URL
+                        progressBar.setVisibility(View.GONE); // Hide the progress bar in case of failure
+                        Toast.makeText(shareUserProfile.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
                     });
                 })
-                .addOnFailureListener(exception -> {
-                    // Handle failure to upload the PDF file
-                    Toast.makeText(shareUserProfile.this, "Failed to upload the PDF file", Toast.LENGTH_SHORT).show();
+                .addOnFailureListener(e -> {
+                    // Handle failure to upload PDF file
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(shareUserProfile.this, "Failed to upload profile PDF", Toast.LENGTH_SHORT).show();
                 });
-
-        return fileName; // Return the unique filename (optional, based on your needs)
     }
 
-    private void sendMessageToReceiver(String fileUrl) {
-        // Construct a message with the file URL and other details
-        HashMap<String, Object> messageMap = new HashMap<>();
-        messageMap.put("sender", firebaseUser.getUid());
-        messageMap.put("receiver", receiverId);
-        messageMap.put("messageType", "pdf"); // Indicate the type of the message
-        messageMap.put("fileUrl", fileUrl);
-        messageMap.put("timestamp", System.currentTimeMillis());
-        messageMap.put("isseen", false);
+    private void sendMessageWithDescription(String message) {
+        // Create a new message containing the description and PDF download URL
+        reference = FirebaseDatabase.getInstance().getReference();
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", firebaseUser.getUid());
+        hashMap.put("receiver", receiverId);
+        hashMap.put("message", message);
+        hashMap.put("timestamp", System.currentTimeMillis());
+        hashMap.put("isseen", false);
 
         // Send the message to the "Chats" node
         String messageId = reference.child("Chats").push().getKey();
-        reference.child("Chats").child(messageId).setValue(messageMap);
+        reference.child("Chats").child(messageId).setValue(hashMap).addOnSuccessListener(aVoid -> {
+                    // Show a toast message when the message is successfully sent
+                    Toast.makeText(shareUserProfile.this, "message that contain profile link sent", Toast.LENGTH_SHORT).show();
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    // Handle failure to send the message
+                    Toast.makeText(shareUserProfile.this, "Failed to send the message", Toast.LENGTH_SHORT).show();
+                });
     }
-
-    //private void shareProfile(File pdfFile) {
-    //    // Upload the PDF file to Firebase Storage
-    //    StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("UserProfilePDFs").child(pdfFile.getName());
-    //    Uri pdfUri = Uri.fromFile(pdfFile);
-    //
-    //    storageReference.putFile(pdfUri)
-    //            .addOnSuccessListener(taskSnapshot -> {
-    //                // Get the download URL of the uploaded file
-    //                storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
-    //                    String pdfDownloadUrl = uri.toString();
-    //
-    //                    // Share the download URL directly with the specific user
-    //                    sendProfilePdfLink(pdfDownloadUrl);
-    //
-    //                    // Notify the user that sharing is successful
-    //                    Toast.makeText(shareUserProfile.this, "Profile shared successfully", Toast.LENGTH_SHORT).show();
-    //                }).addOnFailureListener(e -> {
-    //                    // Handle failure to get download URL
-    //                    Toast.makeText(shareUserProfile.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
-    //                });
-    //            })
-    //            .addOnFailureListener(e -> {
-    //                // Handle failure to upload PDF file
-    //                Toast.makeText(shareUserProfile.this, "Failed to upload profile PDF", Toast.LENGTH_SHORT).show();
-    //            });
-    //}
-    //
-    //private void sendProfilePdfLink(String pdfDownloadUrl) {
-    //    // Create a new message containing the PDF download URL
-    //    reference = FirebaseDatabase.getInstance().getReference();
-    //    HashMap<String, Object> hashMap = new HashMap<>();
-    //    hashMap.put("sender", firebaseUser.getUid());
-    //    hashMap.put("receiver", receiverId);
-    //    hashMap.put("pdfUrl", pdfDownloadUrl);
-    //    hashMap.put("timestamp", System.currentTimeMillis());
-    //    hashMap.put("isseen", false);
-    //
-    //    // Send the message to the "Chats" node
-    //    String messageId = reference.child("Chats").push().getKey();
-    //    reference.child("Chats").child(messageId).setValue(hashMap);
-    //}
 }

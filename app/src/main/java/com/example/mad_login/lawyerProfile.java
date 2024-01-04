@@ -105,23 +105,32 @@ public class lawyerProfile extends AppCompatActivity {
             }
         });
 
-//        bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setSelectedItemId(R.id.menu_home);
-//        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                int itemId = item.getItemId();
-//                if (itemId == R.id.menu_home) {
-//                    return true;
-//                } else if (itemId == R.id.menu_cases) {
-//                    startActivity(new Intent(getApplicationContext(), MainActivity_3.class));
-//                    finish();
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.menu_home);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.menu_home) {
+                    return true;
+                } else if (itemId == R.id.menu_cases) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity_3.class));
+                    return true;
+                } else if (itemId == R.id.menu_profile) {
+                    startActivity(new Intent(getApplicationContext(), lawyerProfile.class));
+                    return true;
+                }else if (itemId == R.id.menu_chat) {
+                    startActivity(new Intent(getApplicationContext(), lawyer_ChatActivity.class));
+                    return true;
+                }
+//                else if (itemId == R.id.menu_request) {
+////                    startActivity(new Intent(getApplicationContext(), MainActivity_3.class));
 //                    return true;
 //                }
-//                return false;
-//            }
-//        });
-//
+                return false;
+            }
+        });
+
 //        //go to case history
 //        btnCaseHistory.setOnClickListener(new View.OnClickListener() {
 //            @Override
