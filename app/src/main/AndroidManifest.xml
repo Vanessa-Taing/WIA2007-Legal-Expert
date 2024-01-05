@@ -44,9 +44,8 @@
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
@@ -111,12 +110,22 @@
         <activity
             android:name=".userProfile"
             android:exported="true" />
+
         <activity
             android:name=".login1_generalUser"
             android:exported="true" />
+
         <activity
             android:name=".SignUp_generalUser"
             android:exported="true" />
+
+        <activity android:name=".UploadedCaseDetails"
+            android:exported="true"/>
+
+        <activity android:name=".MainActivity"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>

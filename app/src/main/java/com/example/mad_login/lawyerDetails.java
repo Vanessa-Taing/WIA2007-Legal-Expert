@@ -45,7 +45,7 @@ public class lawyerDetails extends AppCompatActivity {
         TVemail = findViewById(R.id.email);
         IVimage = findViewById(R.id.lawyerImage);
         btnAppointment =findViewById(R.id.btnAppointment);
-        btnContactLawyer =findViewById(R.id.btnContactLawyer);
+        btnContactLawyer =findViewById(R.id.BtnChatLawyer);
         RBRating = findViewById(R.id.rating);
 
 

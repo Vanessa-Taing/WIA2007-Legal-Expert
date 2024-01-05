@@ -352,7 +352,8 @@
                 android:layout_below="@+id/TILQualification"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="Update"/>
+                android:text="Update"
+                android:backgroundTint="@color/my_primary"/>
 
             <ProgressBar
                 android:id="@+id/progressBar"

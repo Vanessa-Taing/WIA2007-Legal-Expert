@@ -182,7 +182,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="Submit"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:backgroundTint="@color/my_primary"/>
 
         </RelativeLayout>
     </LinearLayout>

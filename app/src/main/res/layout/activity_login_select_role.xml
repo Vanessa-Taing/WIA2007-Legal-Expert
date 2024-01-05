@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lawyer"
+        android:textSize="18sp"
         android:layout_gravity="center"/>
 
     <ImageView
@@ -36,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Citizen"
+        android:textSize="18sp"
         android:layout_gravity="center"/>
 
 </LinearLayout>

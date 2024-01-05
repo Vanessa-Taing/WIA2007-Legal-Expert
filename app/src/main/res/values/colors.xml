@@ -11,4 +11,7 @@
     <color name="mainPurple">#7971EA</color>
     <color name="darkPurple">#4A4687</color>
     <color name="blue">#2893E8</color>
+    <color name="lightGray">#D9D9D9</color>
+    <color name="buttonGray">#65696F</color>
+    <color name="lightPurple">#BCB9E3</color>
 </resources>

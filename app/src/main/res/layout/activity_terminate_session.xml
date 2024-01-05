@@ -36,6 +36,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/ic_cancel"
+            android:backgroundTint="@color/my_primary"
             android:onClick="onConfirmButtonClick"/>
 
         <TextView
@@ -109,7 +110,8 @@
             android:layout_centerHorizontal="true"
             android:text="Confirm"
             android:layout_marginTop="20dp"
-            android:onClick="onConfirmButtonClick"/>
+            android:onClick="onConfirmButtonClick"
+            android:backgroundTint="@color/my_primary"/>
 
     </RelativeLayout>
 

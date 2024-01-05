@@ -35,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="Choose Picture" />
+                android:text="Choose Picture"
+                android:backgroundTint="@color/my_primary"/>
 
             <ImageView
                 android:id="@+id/imageView_profile_dp"
@@ -53,7 +54,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/imageView_profile_dp"
                 android:layout_marginTop="10dp"
-                android:text="Upload" />
+                android:text="Upload"
+                android:backgroundTint="@color/my_primary"/>
 
             <ProgressBar
                 android:id="@+id/progressBar"

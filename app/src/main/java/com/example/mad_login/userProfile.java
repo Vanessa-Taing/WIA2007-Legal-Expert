@@ -39,7 +39,7 @@ public class userProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         btnLogOut =findViewById(R.id.btnLogOut);
-        btnSupport =findViewById(R.id.btnSupport);
+        btnSupport =findViewById(R.id.btnFeedback);
         btnSetting =findViewById(R.id.btnSetting);
         btnSchedule =findViewById(R.id.btnSchedule);
         btnMyCase =findViewById(R.id.btnMyCase);

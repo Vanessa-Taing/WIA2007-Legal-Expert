@@ -391,10 +391,11 @@
                 android:backgroundTint="@color/my_primary"/>
 
             <Button
-                android:id="@+id/btnContactLawyer"
+                android:id="@+id/BtnChatLawyer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contact Lawyer"/>
+                android:backgroundTint="@color/my_primary"
+                android:text="Contact Lawyer" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
