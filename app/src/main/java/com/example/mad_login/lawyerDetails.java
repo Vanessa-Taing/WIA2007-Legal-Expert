@@ -1,13 +1,33 @@
 package com.example.mad_login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class lawyerDetails extends AppCompatActivity {
-    private TextView TVname, TVlawfirm, TVDOB, TVexpYear, TVspecialization, TVgender, TVlanguage, TVstate, TVmobile, TVemail, IVimage;
+    private TextView TVname, TVlawfirm, TVDOB, TVexpYear, TVspecialization, TVgender, TVlanguage, TVstate, TVmobile, TVemail;
+    private ImageView IVimage;
+    private Button btnAppointment,btnContactLawyer;
+    private FirebaseUser firebaseUser;
+    private RatingBar RBRating;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,42 +43,73 @@ public class lawyerDetails extends AppCompatActivity {
         TVstate = findViewById(R.id.state);
         TVmobile = findViewById(R.id.mobile);
         TVemail = findViewById(R.id.email);
+        IVimage = findViewById(R.id.lawyerImage);
+        btnAppointment =findViewById(R.id.btnAppointment);
+        btnContactLawyer =findViewById(R.id.btnContactLawyer);
+        RBRating = findViewById(R.id.rating);
 
-        String name = getIntent().getStringExtra("name");
-        String lawfirm = getIntent().getStringExtra("lawfirm");
-        String dob = getIntent().getStringExtra("DOB");
-        String expyear = getIntent().getStringExtra("expYear");
-        String spec = getIntent().getStringExtra("specialization");
-        String gender = getIntent().getStringExtra("gender");
-        String language = getIntent().getStringExtra("language");
-        String state = getIntent().getStringExtra("state");
-        String mobile = getIntent().getStringExtra("mobile");
-        String email = getIntent().getStringExtra("email");
 
-        TVname.setText(name);
-        TVDOB.setText("Date of birth: " + dob);
-        TVemail.setText("Email: " + email);
-        TVgender.setText("Gender: " + gender);
-        TVstate.setText("State: " + state);
-        TVmobile.setText("Mobile: " + mobile);
-        TVspecialization.setText("Specialization: " + spec);
-        TVlanguage.setText("Language: " + language);
-        TVlawfirm.setText(lawfirm);
-        TVexpYear.setText("Experience year: " + expyear);
-        //IVimage
+        auth =FirebaseAuth.getInstance();
+        firebaseUser = auth.getCurrentUser();
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.mainPurple)));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("lawyer details");
 
-//        Toolbar toolbar = findViewById(R.id.app_bar);
-//        setSupportActionBar(toolbar);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View view) {
-//                onBackPressed();
-//            }
-//        });
+
+        //  stored the lawyer data under a node called "Registered Lawyers"
+        String lawyerId = auth.getCurrentUser().getUid();
+        DatabaseReference lawyerRef = FirebaseDatabase.getInstance().getReference().child("Registered Lawyers").child(lawyerId);
+
+        lawyerRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ReadWriteUserDetails readUserDetails = dataSnapshot.getValue(ReadWriteUserDetails.class);
+                if (readUserDetails!=null) {
+                    String name = readUserDetails.name;
+                    String lawfirm = readUserDetails.lawFirm;
+                    String dob = readUserDetails.doB;
+                    String expyear =readUserDetails.expYear;
+                    String spec = readUserDetails.specialization;
+                    String gender = readUserDetails.gender;
+                    String language = readUserDetails.language;
+                    String state =readUserDetails.state;
+                    String mobile = readUserDetails.mobile;
+                    String email = readUserDetails.email;
+                    //set rating
+
+                    // Update the UI with the retrieved data
+                    TVname.setText(name);
+                    TVDOB.setText("Date of birth: " + dob);
+                    TVemail.setText("Email: " + email);
+                    TVgender.setText("Gender: " + gender);
+                    TVstate.setText("State: " + state);
+                    TVmobile.setText("Mobile: " + mobile);
+                    TVspecialization.setText("Specialization: " + spec);
+                    TVlanguage.setText("Language: " + language);
+                    TVlawfirm.setText("Law Firm: "+lawfirm);
+                    TVexpYear.setText("Experience year: " + expyear);
+                    //set rating
+
+                    //code to set profile picture
+                    // Set default profile picture
+                    IVimage.setImageResource(R.drawable.ic_baseline_account_box_24);
+                    // Check if the user has a profile picture
+                    if (firebaseUser.getPhotoUrl() != null) {
+                        // Load the uploaded profile picture using Picasso
+                        Uri uri = firebaseUser.getPhotoUrl();
+                        Picasso.get().load(uri).into(IVimage);
+                    }
+                }else{
+                    Toast.makeText(lawyerDetails.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(lawyerDetails.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
     }
 }

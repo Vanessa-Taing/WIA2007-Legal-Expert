@@ -1,157 +1,407 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lawyerDetails">
+    android:orientation="vertical"
+    tools:context=".shareUserProfile">
 
-
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
+            android:id="@+id/layout_head"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:id="@+id/detailsMenu">
-
+            android:layout_height="200dp"
+            android:background="@color/my_primary">
 
             <ImageView
                 android:id="@+id/lawyerImage"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:contentDescription="Profile Picture"
-                android:padding="0dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_baseline_account_box_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/lawyerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:text="Name"
+                android:layout_toRightOf="@id/lawyerImage"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/lawyerImage"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/lawFirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Law firm"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintStart_toEndOf="@id/lawyerImage"
-                app:layout_constraintTop_toBottomOf="@+id/lawyerName" />
-
-            <TextView
-                android:id="@+id/DOB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Date of Birth: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lawyerImage" />
-
-            <TextView
-                android:id="@+id/EXPYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Experience year: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/DOB" />
-
-            <TextView
-                android:id="@+id/specialization"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Specialization: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/EXPYear" />
-
-            <TextView
-                android:id="@+id/gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Gender: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/specialization" />
-
-            <TextView
-                android:id="@+id/language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Language: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gender" />
+                android:hint="Name"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="State: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/language" />
+                android:layout_toRightOf="@id/lawyerImage"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:textSize="12sp"
+                android:hint="State"
+                android:layout_below="@id/lawyerName"
+                android:textColor="@android:color/black"/>
 
-            <TextView
-                android:id="@+id/mobile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Mobile: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/state" />
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Email: "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mobile" />
-
-            <TextView
+            <RatingBar
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Rating (out of 5):"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+                android:layout_toRightOf="@id/lawyerImage"
+                android:layout_below="@id/state"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:rating="0.0"
+                style="?android:attr/ratingBarStyleIndicator" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border"
+            android:padding="15dp">
+
+            <!--language-->
+            <RelativeLayout
+                android:id="@+id/RL_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/ic_profile"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_language" />
+
+                <TextView
+                    android:id="@+id/language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_profile"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:hint="language"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_language"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_language"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:id="@+id/RL_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_language"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <!--email-->
+                <ImageView
+                    android:id="@+id/ic_email"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_email" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_email"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="email"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_email"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_email"
+                android:background="@android:color/darker_gray" />
+
+            <!--dob-->
+            <RelativeLayout
+                android:id="@+id/RL_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_email"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    />
+                <ImageView
+                    android:id="@+id/ic_dob"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_birthday"/>
+
+                <TextView
+                    android:id="@+id/DOB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_dob"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="birthday"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_dob"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_dob"
+                android:background="@android:color/darker_gray" />
+
+            <!--gender-->
+            <RelativeLayout
+                android:id="@+id/RL_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_dob"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_gender"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_gender" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_gender"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="gender"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_gender"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_gender"
+                android:background="@android:color/darker_gray" />
+
+            <!--mobile-->
+            <RelativeLayout
+                android:id="@+id/RL_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_gender"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_mobile"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_mobile"/>
+
+                <TextView
+                    android:id="@+id/mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_mobile"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="phone number"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_phone"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_mobile"
+                android:background="@android:color/darker_gray" />
+
+            <!--lawFirm description-->
+            <RelativeLayout
+                android:id="@+id/RL_lawFirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RL_mobile"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_lawFirm"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_law_firm"/>
+
+                <TextView
+                    android:id="@+id/lawFirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_lawFirm"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="law firm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_lawFirm"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_lawFirm"
+                android:background="@android:color/darker_gray" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--specialise description-->
+            <RelativeLayout
+                android:id="@+id/RL_specialise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RL_lawFirm"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_specialise"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_specialization"/>
+
+                <TextView
+                    android:id="@+id/specialization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_specialise"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="specialization "
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_specialization"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_specialise"
+                android:background="@android:color/darker_gray" />
+
+            <!--experience year description-->
+            <RelativeLayout
+                android:id="@+id/RL_expYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RL_specialise"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_expYear"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/baseline_calendar_month_24"/>
+
+                <TextView
+                    android:id="@+id/EXPYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_expYear"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="experience year "
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_expYear"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_expYear"
+                android:background="@android:color/darker_gray" />
 
 
-    </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:elevation="10dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnAppointment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Make Appointment"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/my_primary"/>
+
+            <Button
+                android:id="@+id/btnContactLawyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Lawyer"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+
+
+
+
+
+
