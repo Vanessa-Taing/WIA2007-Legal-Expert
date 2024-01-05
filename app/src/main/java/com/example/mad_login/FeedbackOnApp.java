@@ -1,7 +1,10 @@
 package com.example.mad_login;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -57,7 +60,7 @@ public class FeedbackOnApp extends AppCompatActivity {
         long newRowId = databaseHelper.addFeedback(feedback);
 
         if (newRowId != -1) {
-            Toast.makeText(this, "Feedback submitted successfully", Toast.LENGTH_SHORT).show();
+            showThankYouDialog(); // Show the thank you dialog
         } else {
             Toast.makeText(this, "Failed to submit feedback", Toast.LENGTH_SHORT).show();
         }
@@ -65,5 +68,24 @@ public class FeedbackOnApp extends AppCompatActivity {
         // You can clear the fields or perform any other actions after submission
         ratingBar.setRating(0);
         etFeedback.getText().clear();
+    }
+
+    private void showThankYouDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_thank_you);
+
+        Button btnClose = dialog.findViewById(R.id.BtnClose);
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                startActivity(new Intent(FeedbackOnApp.this, userProfile.class));
+            }
+        });
+
+        dialog.show();
     }
 }
