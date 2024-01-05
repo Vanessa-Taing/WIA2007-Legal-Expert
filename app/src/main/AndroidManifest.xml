@@ -19,6 +19,13 @@
         android:theme="@style/Base.Theme.LegalExpert"
         tools:targetApi="31">
         <activity
+            android:name=".caseDetails"
+            android:exported="false" />
+        <activity
+            android:name=".CaseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
             android:name=".FeedbackOnApp"
             android:exported="false" />
         <activity
@@ -50,7 +57,7 @@
             android:exported="true" />
         <activity
             android:name=".shareUserProfile"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".UploadProfilePic"
             android:exported="true" />
@@ -77,13 +84,14 @@
             android:exported="true" />
         <activity
             android:name=".userProfile"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".login1_generalUser"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".SignUp_generalUser"
             android:exported="true" />
@@ -99,13 +107,12 @@
         <activity
             android:name=".LawyerListActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            />
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".LawyerDetailsActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            android:parentActivityName=".LawyerListActivity"/>
+            android:parentActivityName=".LawyerListActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
     </application>
 
 </manifest>

@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,11 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class userProfile extends AppCompatActivity {
-    private TextView TVProfileName,TVProfileState,TVShareProfile;
+    private TextView TVProfileName,TVProfileState;
     private ImageView ProfilePictureView;
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
     private Button btnFeedback, btnSetting, btnSchedule,btnMyCase,btnLogOut;
+    private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +44,10 @@ public class userProfile extends AppCompatActivity {
         TVProfileName =findViewById(R.id.TVProfileName);
         TVProfileState = findViewById(R.id.TVState);
         ProfilePictureView = findViewById(R.id.imageView_profile_dp);
-        TVShareProfile=findViewById(R.id.tvShareProfile);
 
-        TVShareProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(userProfile.this,shareUserProfile.class));
-            }
-        });
+        // Set default profile picture
+        ProfilePictureView.setImageResource(R.drawable.mad_cat);
+
 
         authProfile =FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
@@ -103,6 +104,31 @@ public class userProfile extends AppCompatActivity {
                 startActivity(new Intent(userProfile.this, userSetting.class));
             }
         });
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.menu_home) {
+                    startActivity(new Intent(getApplicationContext(), CaseActivity.class));
+                    return true;
+                } else if (itemId == R.id.menu_cases) {
+                    return true;
+                }  else if (itemId == R.id.menu_lawyer) {
+                    startActivity(new Intent(getApplicationContext(), LawyerListActivity.class));
+                    return true;
+                } else if (itemId == R.id.menu_profile) {
+                    startActivity(new Intent(getApplicationContext(), userProfile.class));
+                    return true;
+                }else if (itemId == R.id.menu_chat) {
+                    startActivity(new Intent(getApplicationContext(), User_ChatActivity.class));
+                    return true;
+                }
+                return false;
+            }
+        });
+
 //        //go to my case
 //        btnMyCase.setOnClickListener(new View.OnClickListener() {
 //            @Override

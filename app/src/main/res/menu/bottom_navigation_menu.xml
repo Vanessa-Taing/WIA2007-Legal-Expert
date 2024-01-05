@@ -19,7 +19,7 @@
 
     <item android:title="Lawyer"
         android:icon="@drawable/icon_lawyer"
-        android:id="@+id/menu_request"
+        android:id="@+id/menu_lawyer"
         />
 
     <item android:title="Profile"

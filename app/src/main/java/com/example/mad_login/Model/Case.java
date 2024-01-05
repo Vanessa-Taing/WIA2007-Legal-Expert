@@ -1,51 +1,33 @@
 package com.example.mad_login.Model;
-public class Case {
 
-    private String caseName;
-    private String caseDescription,documentUrl;
-    private String caseType;
+import java.io.Serializable;
+
+public class Case implements Serializable {
+    private static final long serialVersionUID = 1L;
+    public String caseName,caseDescription,documentUrl, caseType,fileName;
 
     // Required default constructor for Firebase
     public Case() {
         // Default constructor required for calls to DataSnapshot.getValue(Case.class)
     }
 
-    public Case(String caseName, String caseDescription, String caseType,String documentUrl) {
+    public Case(String fileName,String documentUrl) {
+        this.documentUrl = documentUrl;
+        this.fileName = fileName;
+    }
+
+    public Case(String caseName, String caseDescription, String caseType, String documentUrl) {
         this.caseName = caseName;
         this.caseDescription = caseDescription;
         this.caseType = caseType;
         this.documentUrl =documentUrl;
     }
 
-    public String documentUrl() {
+    public String getDocumentUrl() {
         return documentUrl;
     }
 
-    public void documentUrl(String documentUrl) {
+    public void setDocumentUrl(String documentUrl) {
         this.documentUrl = documentUrl;
-    }
-
-    public String getCaseName() {
-        return caseName;
-    }
-
-    public void setCaseName(String caseName) {
-        this.caseName = caseName;
-    }
-
-    public String getCaseDescription() {
-        return caseDescription;
-    }
-
-    public void setCaseDescription(String caseDescription) {
-        this.caseDescription = caseDescription;
-    }
-
-    public String getCaseType() {
-        return caseType;
-    }
-
-    public void setCaseType(String caseType) {
-        this.caseType = caseType;
     }
 }

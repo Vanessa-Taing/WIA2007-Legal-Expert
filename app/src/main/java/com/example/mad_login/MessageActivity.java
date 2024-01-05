@@ -2,6 +2,7 @@ package com.example.mad_login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Callback;
 
@@ -42,14 +45,13 @@ public class MessageActivity extends AppCompatActivity {
     TextView username;
     RecyclerView recyclerView;
     EditText messageInput;
-    ImageButton btn_send;
+    ImageButton btn_send,btn_share_profile;
 
     FirebaseUser currentUser;
     DatabaseReference reference;
 
     MessageAdapter messageAdapter;
     List<Chat> mchat;
-
     Intent intent;
     ValueEventListener seenListener;
 
@@ -79,6 +81,7 @@ public class MessageActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         btn_send = findViewById(R.id.btn_send);
         messageInput = findViewById(R.id.messageInput);
+        btn_share_profile =findViewById(R.id.btn_share_profile);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference().child("Registered Users");
@@ -86,7 +89,38 @@ public class MessageActivity extends AppCompatActivity {
         intent = getIntent();
         String receiverId = intent.getStringExtra("userid");
         String receiverName = intent.getStringExtra("username");
-        String receiverImageUrl = intent.getStringExtra("imageUrl");
+
+        btn_share_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToShareProfileActivity(receiverId);
+            }
+        });
+
+        //set receiver's profile image and set it to profile_image
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://legalexpert-2ff12.appspot.com/");
+
+        // Get a reference to the receiver's image
+        StorageReference receiverImageRef = storageRef.child("DisplayPics/" + receiverId + ".jpg");
+
+        // Load the default profile picture
+        profile_image.setImageResource(R.drawable.mad_cat);
+
+        // Get the download URL
+        receiverImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Load the uploaded profile picture using Picasso
+                Picasso.get().load(uri).into(profile_image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                Log.e("MessageActivity", "Error loading profile picture", exception);
+            }
+        });
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,23 +135,19 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-
         reference.child(receiverId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 username.setText(receiverName);
-                Picasso.get().load(receiverImageUrl).into(profile_image);
 
                 // Read messages after setting up the user details
                 readMessages(receiverId, currentUser.getUid());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("MessageActivity", "Error reading user details", error.toException());
             }
         });
-
         seenMessage(receiverId);
     }
 
@@ -142,7 +172,11 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void navigateToShareProfileActivity(String receiverUid) {
+        Intent intent = new Intent(MessageActivity.this, shareUserProfile.class);
+        intent.putExtra("receiverUid", receiverUid);
+        startActivity(intent);
+    }
     private void sendMessage(String sender, String receiver, String message) {
         reference = FirebaseDatabase.getInstance().getReference();
 

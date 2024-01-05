@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background_left"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:layout_marginEnd="30dp">
 
         <TextView
             android:id="@+id/show_message"
@@ -31,7 +32,8 @@
             android:padding="8dp"
             android:text="hello"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColorLink="@color/blue"/>
 
         <TextView
             android:id="@+id/tv_time"

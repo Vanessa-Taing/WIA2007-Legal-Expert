@@ -9,7 +9,7 @@
 
     <!-- Style for your button -->
     <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:background">#FFFFFF</item>
+        <item name="android:background">@color/my_primary</item>
     </style>
 
 </resources>

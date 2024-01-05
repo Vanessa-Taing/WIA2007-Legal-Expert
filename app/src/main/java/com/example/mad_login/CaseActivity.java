@@ -1,22 +1,22 @@
 package com.example.mad_login;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.mad_login.Adapter.LawyerAdapter;
-import com.example.mad_login.Model.LawyerInfo;
+import com.example.mad_login.Adapter.CaseAdapter;
+import com.example.mad_login.Model.CaseDatabase;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -29,10 +29,10 @@ import java.util.Set;
 
 // View.onCLickListener is more general that handles clicks events for any type of view(UI element)
 // MainAdapter.onItemClickListener is more specific and used in context of recyclerView
-public class LawyerListActivity extends AppCompatActivity {
+public class CaseActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    LawyerAdapter lawyerAdapter;
+    CaseAdapter caseAdapter;
     private BottomNavigationView bottomNavigationView;
 
     private Set<String> selectedFilters = new HashSet<>();
@@ -41,7 +41,7 @@ public class LawyerListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lawyer_list);
+        setContentView(R.layout.activity_case);
 
         Button buttonCivil = findViewById(R.id.button_civil);
         Button buttonConsumer = findViewById(R.id.button_consumer);
@@ -53,7 +53,7 @@ public class LawyerListActivity extends AppCompatActivity {
 
         // Change the background color & text of the ActionBar
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Find Lawyers");
+            getSupportActionBar().setTitle("cases");
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.my_primary)));
         }
 
@@ -66,13 +66,13 @@ public class LawyerListActivity extends AppCompatActivity {
         buttonCivil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toggleFilter("Civil", buttonCivil);
+                toggleFilter("civil", buttonCivil);
             }
         });
         buttonConsumer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toggleFilter("Consumer", buttonConsumer);
+                toggleFilter("consumer", buttonConsumer);
             }
         });
 
@@ -80,27 +80,27 @@ public class LawyerListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                toggleFilter("Contract",buttonContract);
+                toggleFilter("contract",buttonContract);
             }
         });
         buttonCriminal.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                toggleFilter("Criminal",buttonCriminal);
+                toggleFilter("criminal",buttonCriminal);
             }
         } );
         buttonFamily.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                toggleFilter("Family",buttonFamily);
+                toggleFilter("family",buttonFamily);
             }
         } );
         buttonIslamic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toggleFilter("Islamic", buttonIslamic);
+                toggleFilter("islamic", buttonIslamic);
             }
         });
 
@@ -108,33 +108,24 @@ public class LawyerListActivity extends AppCompatActivity {
 
 
         //firebaseRecycler adapter set up
-        FirebaseRecyclerOptions<LawyerInfo> options =
-                new FirebaseRecyclerOptions.Builder<LawyerInfo>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Registered Lawyers"), LawyerInfo.class)
+        FirebaseRecyclerOptions<CaseDatabase> options =
+                new FirebaseRecyclerOptions.Builder<CaseDatabase>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Cases Code"), CaseDatabase.class)
                         .build();
 
-        lawyerAdapter = new LawyerAdapter(options, new LawyerAdapter.OnItemClickListener() {
-            public void onItemClick(LawyerInfo model, String lawyerID) {
-                Intent intent = new Intent(LawyerListActivity.this, LawyerDetailsActivity.class);
-                intent.putExtra("uid", lawyerID);
-                intent.putExtra("name", model.getName());
-                intent.putExtra("imageUrl", model.getImageUrl());
-                intent.putExtra("lawfirm", model.getLawFirm());
-                intent.putExtra("DOB", model.getDoB());
-                intent.putExtra("expYear", model.getExpYear());
-                intent.putExtra("specialization", model.getSpecialization());
-                intent.putExtra("gender", model.getGender());
-                intent.putExtra("language", model.getLanguage());
-                intent.putExtra("state", model.getState());
-                intent.putExtra("mobile", model.getMobile());
-                intent.putExtra("email", model.getEmail());
-                intent.putExtra("rating", model.getRating());
-                intent.putExtra("lawyerInfo", model);
+        caseAdapter = new CaseAdapter(options, new CaseAdapter.OnItemClickListener() {
+            public void onItemClick(CaseDatabase model) {
+                Intent intent = new Intent(CaseActivity.this, caseDetails.class);
+                intent.putExtra("casetype", model.getCasetype());
+                intent.putExtra("keywords", model.getKeywords());
+                intent.putExtra("desc", model.getDesc());
+                intent.putExtra("summary", model.getSummary());
+                intent.putExtra("url", model.getUrl());
                 startActivity(intent);
             }
         });
 
-        recyclerView.setAdapter(lawyerAdapter);
+        recyclerView.setAdapter(caseAdapter);
 
         //recyclerView.setLayoutManager is like telling someone how to arrange the item
         //recyclerView.setAdapter is like actually put the item to there and let him arrange
@@ -142,7 +133,7 @@ public class LawyerListActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@androidx.annotation.NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.menu_home) {
                     startActivity(new Intent(getApplicationContext(), CaseActivity.class));
@@ -173,7 +164,7 @@ public class LawyerListActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.search, menu); //create search and put it in the menu
         MenuItem item = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) item.getActionView();
-        searchView.setQueryHint("Search Name");
+        searchView.setQueryHint("search any keywords");
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -195,35 +186,29 @@ public class LawyerListActivity extends AppCompatActivity {
 
     private void txtSearch(String str) {
         String lowercaseQuery = str.toLowerCase(); // Convert user input to lowercase
-        FirebaseRecyclerOptions<LawyerInfo> options =
-                new FirebaseRecyclerOptions.Builder<LawyerInfo>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Registered Lawyers").orderByChild("name").startAt(lowercaseQuery).endAt(str + "\uf8ff"), LawyerInfo.class)
+        FirebaseRecyclerOptions<CaseDatabase> options =
+                new FirebaseRecyclerOptions.Builder<CaseDatabase>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Cases Code").orderByChild("keywords").startAt(lowercaseQuery).endAt(str + "\uf8ff"), CaseDatabase.class)
                         .build();
 
-        lawyerAdapter = new LawyerAdapter(options, new LawyerAdapter.OnItemClickListener() {
+        caseAdapter = new CaseAdapter(options, new CaseAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(LawyerInfo model, String lawyerID) {
+            public void onItemClick(CaseDatabase model) {
+
                 //so intent is like a magical messenger bird that helps you move from one room to another (in your app) (so it takes 2 parameters)
-                Intent intent = new Intent(LawyerListActivity.this, LawyerDetailsActivity.class);
-                intent.putExtra("uid", lawyerID);
-                intent.putExtra("name", model.getName());
-                intent.putExtra("lawfirm", model.getLawFirm());
-                intent.putExtra("DOB", model.getDoB());
-                intent.putExtra("expYear", model.getExpYear());
-                intent.putExtra("specialization", model.getSpecialization());
-                intent.putExtra("gender", model.getGender());
-                intent.putExtra("language", model.getLanguage());
-                intent.putExtra("state", model.getState());
-                intent.putExtra("mobile", model.getMobile());
-                intent.putExtra("email", model.getEmail());
-                intent.putExtra("rating", model.getRating());
+                Intent intent = new Intent(CaseActivity.this, caseDetails.class);
+                intent.putExtra("casetype", model.getCasetype());
+                intent.putExtra("keywords", model.getKeywords());
+                intent.putExtra("desc", model.getDesc());
+                intent.putExtra("summary", model.getSummary());
+                intent.putExtra("url", model.getUrl());
                 startActivity(intent); //release the magical messenger bird
             }
 
 
         });
-        recyclerView.setAdapter(lawyerAdapter);
-        lawyerAdapter.startListening();
+        recyclerView.setAdapter(caseAdapter);
+        caseAdapter.startListening();
 
     }
 
@@ -252,29 +237,25 @@ public class LawyerListActivity extends AppCompatActivity {
             selectedFilters.add(filter);
             button.setBackgroundColor(ContextCompat.getColor(this, R.color.dark_purple));
         }
-        Log.d("Filter", "Toggling filter: " + filter);
 
         applyFilters();
     }
 
 
     private void applyFilters() {
-        FirebaseRecyclerOptions<LawyerInfo> options;
+        FirebaseRecyclerOptions<CaseDatabase> options;
 
         if (selectedFilters.isEmpty()) {
-            // Query to get all lawyers when no filters are selected
-            options = new FirebaseRecyclerOptions.Builder<LawyerInfo>()
-                    .setQuery(FirebaseDatabase.getInstance().getReference().child("Registered Lawyers"), LawyerInfo.class)
+            options = new FirebaseRecyclerOptions.Builder<CaseDatabase>()
+                    .setQuery(FirebaseDatabase.getInstance().getReference().child("Cases Code"), CaseDatabase.class)
                     .build();
         } else {
             // Construct a query based on selected filters
             List<String> selectedFilterList = new ArrayList<>(selectedFilters);
-
-            // Construct the query for filtering by specialization
-            options = new FirebaseRecyclerOptions.Builder<LawyerInfo>()
-                    .setQuery(FirebaseDatabase.getInstance().getReference().child("Registered Lawyers")
-                            .orderByChild("specialization").startAt(selectedFilterList.get(0))
-                            .endAt(selectedFilterList.get(selectedFilterList.size() - 1) + "\uf8ff"), LawyerInfo.class)
+            options = new FirebaseRecyclerOptions.Builder<CaseDatabase>()
+                    .setQuery(FirebaseDatabase.getInstance().getReference().child("Cases Code")
+                            .orderByChild("casetype").startAt(selectedFilterList.get(0))
+                            .endAt(selectedFilterList.get(selectedFilterList.size() - 1) + "\uf8ff"), CaseDatabase.class)
                     .build();
         }
 
@@ -282,44 +263,36 @@ public class LawyerListActivity extends AppCompatActivity {
         //after the item is listed base on what user apply, then related item will display
         //MainAdapter.ObItemClickListener() to to define what happen if the item in recyclerView is clicked
 
-        lawyerAdapter = new LawyerAdapter(options, new LawyerAdapter.OnItemClickListener() {
+        caseAdapter = new CaseAdapter(options, new CaseAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(LawyerInfo model, String lawyerID) {
-                Intent intent = new Intent(LawyerListActivity.this, LawyerDetailsActivity.class);
-                intent.putExtra("uid", lawyerID);
-                intent.putExtra("name", model.getName());
-                intent.putExtra("lawfirm", model.getLawFirm());
-                intent.putExtra("DOB", model.getDoB());
-                intent.putExtra("expYear", model.getExpYear());
-                intent.putExtra("specialization", model.getSpecialization());
-                intent.putExtra("gender", model.getGender());
-                intent.putExtra("language", model.getLanguage());
-                intent.putExtra("state", model.getState());
-                intent.putExtra("mobile", model.getMobile());
-                intent.putExtra("email", model.getEmail());
-                intent.putExtra("rating", model.getRating());
+            public void onItemClick(CaseDatabase model) {
+                Intent intent = new Intent(CaseActivity.this, caseDetails.class);
+                intent.putExtra("casetype", model.getCasetype());
+                intent.putExtra("keywords", model.getKeywords());
+                intent.putExtra("desc", model.getDesc());
+                intent.putExtra("summary", model.getSummary());
+                intent.putExtra("url", model.getUrl());
                 startActivity(intent);
             }
         });
-        // Set the adapter for the recyclerView
-        recyclerView.setAdapter(lawyerAdapter);
-
-        // Start listening for changes
-        lawyerAdapter.startListening();
+        recyclerView.setAdapter(caseAdapter);// main adapter is like the manager who decide what items to show
+        caseAdapter.startListening(); //telling manager to pay attention to changes of data, and update himself
     }
 
     @Override
     //is call when activity become visible to user
     protected void onStart() {
         super.onStart();
-        lawyerAdapter.startListening(); //specific to firebase's recyclerView. tell adapter to start listening to firebase changes and update the UI
+        caseAdapter.startListening(); //specific to firebase's recyclerView. tell adapter to start listening to firebase changes and update the UI
     }
 
     @Override
     //is call when activity no longer visible to user(means it goes into the background)
     protected void onStop() {
         super.onStop();
-        lawyerAdapter.stopListening();
+        caseAdapter.stopListening();
     }
+
+
 
 }

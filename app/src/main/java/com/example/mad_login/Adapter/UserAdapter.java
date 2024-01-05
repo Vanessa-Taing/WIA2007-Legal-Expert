@@ -2,6 +2,7 @@ package com.example.mad_login.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.example.mad_login.MessageActivity;
 import com.example.mad_login.Model.Chat;
 import com.example.mad_login.Model.User;
 import com.example.mad_login.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -38,8 +43,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     private Context mContext;
     private List<User> mUsers;
-
-    private FirebaseUser firebaseUser;
     String theLastMessage;
 
 
@@ -61,12 +64,30 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         holder.username.setText(user.getName());
 
-        //ImageViewer setImageURI() should not be ued with regular URIs. So we are using Picasso
-        Picasso.get()
-                .load(user.getImageUrl())
-                .placeholder(R.drawable.placeholder_image)
-                .error(R.drawable.mad_cat)
-                .into(holder.profile_image);
+        //set receiver's profile image and set it to profile_image
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://legalexpert-2ff12.appspot.com/");
+
+        // Load the default profile picture using holder.profile_image
+        holder.profile_image.setImageResource(R.drawable.mad_cat);
+
+        // Get a reference to the receiver's image
+        StorageReference receiverImageRef = storageRef.child("DisplayPics/" + user.getUid() + ".jpg");
+
+        // Get the download URL
+        receiverImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Load the uploaded profile picture using Picasso into holder.profile_image
+                Picasso.get().load(uri).into(holder.profile_image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@androidx.annotation.NonNull Exception exception) {
+                // Handle any errors
+                Log.e("UserAdapter", "Error loading profile picture", exception);
+            }
+        });
 
         // Call lastMessage to set the last message for this user
         lastMessage(user.getUid(), holder.last_message, holder.time_stamp, holder.unread_message_bubble, holder.unread_message_count);
