@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Rejection Reason"
+        android:textSize="18sp"
+        android:textColor="?android:attr/textColorPrimary" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/alert_2_svgrepo_com"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="Terminating legal services means you will no longer receive assistance or support for this specific case from our platform. Please consider the implications before confirming this action"
+        android:backgroundTint="@color/my_secondary"
+        android:textColor="@color/my_primary"
+        android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroupReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/caseResolved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Client Resolution" />
+
+        <RadioButton
+            android:id="@+id/changeLawyer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scope Change" />
+
+        <RadioButton
+            android:id="@+id/FinancialReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Client Non-Cooperation" />
+
+        <RadioButton
+            android:id="@+id/NoLongerNeeded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Financial reason" />
+
+        <RadioButton
+            android:id="@+id/radioOtherReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other reasons" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etCustomReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Specify other reason"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Case"
+        android:textSize="18sp"
+        android:textColor="?android:attr/textColorPrimary" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioInitiate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Initiate"/>
+
+        <RadioButton
+            android:id="@+id/radioOnGoing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OnGoing"/>
+
+        <RadioButton
+            android:id="@+id/radioOnHold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OnHold"/>
+
+        <RadioButton
+            android:id="@+id/radioComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complete"/>
+    </RadioGroup>
+</LinearLayout>

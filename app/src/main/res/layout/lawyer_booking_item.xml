@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginHorizontal="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:elevation="1000dp"
+    app:cardUseCompatPadding="true"
+    >
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="160dp"
+                    android:orientation="horizontal"
+                    >
+
+
+                <LinearLayout
+                android:id="@+id/leftSideLayout"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                    android:background="@color/darkPurple">
+
+                <TextView
+                    android:id="@+id/TVdateAppointment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="July 15, 2022"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/TVtimeAppointment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="10:00 AM"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="vertical">
+                   <LinearLayout
+                       android:id="@+id/linearLayoutClient"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_below="@+id/TVrejectReason"
+                       android:layout_marginLeft="20dp"
+                       android:layout_marginTop="10dp">
+
+                       <de.hdodenhof.circleimageview.CircleImageView
+                           android:layout_width="40dp"
+                           android:layout_height="60dp"
+                           android:src="@mipmap/ic_launcher"
+                           android:layout_centerVertical = "true"
+                           android:id="@+id/img1" />
+
+                       <TextView
+                           android:id="@+id/TVclientNameAppointment"
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Wong Huan Huan"
+                           android:textColor="@color/darkPurple"
+                           android:textStyle="bold"
+                           android:textSize="18sp"
+                           android:paddingLeft="10dp"
+                           android:layout_gravity="center">
+                       </TextView>
+                   </LinearLayout>
+
+                   <TextView
+                       android:id="@+id/TVcaseAppointment"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Case name:Happy birthday"
+                       android:layout_marginLeft="20dp"
+                       android:textStyle="bold">
+                   </TextView>
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:layout_marginHorizontal="20dp"
+                   android:layout_marginTop="10dp">
+
+
+                   <Button
+                       android:id="@+id/btnRejectAppointment"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Reject"
+                       android:background="@drawable/rounded_button_2nd"
+                       android:textColor="@color/white"
+                       android:layout_marginEnd="25dp"
+                       />
+
+                <Button
+                    android:id="@+id/btnAcceptAppointment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accept"
+                    android:layout_toEndOf="@id/btnReject"
+                    android:background="@drawable/rounded_button"
+                    android:textColor="@color/white" />
+
+
+
+               </LinearLayout>
+               </LinearLayout>
+                </LinearLayout>
+    </androidx.cardview.widget.CardView>
