@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadedCaseDetails">
+
+
+        <RelativeLayout
+            android:id="@+id/RLcaseDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/caseStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Case Status: Submission Stage"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/caseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/caseStatus"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="Case Name: Your Case Name"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/caseType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/caseName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="Case Type: Criminal"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/caseDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/caseType"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="Case Description: Your case description goes here."
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnViewDocument"
+                android:background="@drawable/rounded_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Document"
+                android:textColor="@color/white"
+                android:layout_below="@+id/caseDescription"/>
+
+            <Button
+                android:id="@+id/btnTerminate"
+                android:background="@drawable/rounded_button_2nd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terminate"
+                android:textColor="@color/white"
+                android:layout_below="@+id/btnViewDocument"
+                android:layout_margin="10dp"/>
+
+
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/pdfRecyclerView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/caseDescription"-->
+<!--                android:padding="10dp" />-->
+
+
+
+        </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,32 @@
+package com.example.legalexpert_casestatus2;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+
+import com.google.android.material.tabs.TabLayout;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ViewPager viewPager  = findViewById(R.id.viewPager);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+
+
+        Adapter1 adapter = new Adapter1(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
+        //connect tablayout and viewpager
+        tabLayout.setupWithViewPager(viewPager);
+
+        setTitle("My Cases");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.mainPurple)));
+    }
+}

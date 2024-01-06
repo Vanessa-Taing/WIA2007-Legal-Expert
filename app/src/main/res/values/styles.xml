@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DatePickerTheme">
+        <item name="colorAccent">@color/darkPurple</item>
+    </style>
+
+    <style name="TimePickerTheme">
+        <item name="colorAccent">@color/darkPurple</item>
+    </style>
+</resources>
