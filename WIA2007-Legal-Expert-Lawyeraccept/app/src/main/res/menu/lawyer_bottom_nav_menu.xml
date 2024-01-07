@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Home"
+        android:icon="@drawable/icon_home"
+        android:id="@+id/lawyermenu_home"
+        />
+
+    <item android:title="Appointment"
+        android:icon="@drawable/cases_icon"
+        android:id="@+id/lawyermenu_appointment"
+        />
+
+    <item android:title="Chat"
+        android:icon="@drawable/chat_icon"
+        android:id="@+id/lawyermenu_chat"
+        />
+
+    <item android:title="Request"
+        android:icon="@drawable/bag"
+        android:id="@+id/lawyermenu_request"
+        />
+
+    <item android:title="Profile"
+        android:icon="@drawable/profile_icon"
+        android:id="@+id/lawyermenu_profile"/>
+    />
+</menu>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@android:style/Widget.DeviceDefault.Light.ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".userProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--purple color Profile part-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#8C7AF4">
+
+            <TextView
+                android:id="@+id/TVProfile"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+        </RelativeLayout>
+
+        <!--white color info part-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            >
+
+            <!--Profile Picture-->
+            <ImageView
+                android:id="@+id/imageView_profile_dp"
+                android:layout_width="110dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="30dp"/>
+
+            <TextView
+                android:id="@+id/TVProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wong Huan Huan"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="30dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/TVState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selangor"
+                android:textSize="15sp"
+                android:layout_below="@id/TVProfileName"
+                android:layout_marginStart="145dp"
+                android:textColor="#6A6969"/>
+
+            <TextView
+                android:id="@+id/tvShareProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/TVState"
+                android:layout_marginStart="145dp"
+                android:text="Share Profile"
+                android:textColor="@color/my_primary"/>
+            <TextView
+                android:id="@+id/TVCaseDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvShareProfile"
+                android:layout_marginStart="145dp"
+                android:text="Update Case Description"
+                android:textColor="@color/my_primary"/>
+
+            <View
+                android:id="@+id/divider_profile"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/imageView_profile_dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/black" />
+
+            <!--show Setting-->
+            <ImageView
+                android:id="@+id/IVSetting"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/divider_profile"
+                android:background="@drawable/baseline_settings_24" />
+
+            <Button
+                android:id="@+id/btnSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_profile"
+                android:layout_marginStart="80dp"
+                android:text="Setting"
+                android:textSize="25sp"
+                android:background="#FFFFFF"
+                />
+
+            <TextView
+                android:id="@+id/TV_settingInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnSetting"
+                android:layout_marginStart="80dp"
+                android:text="Edit Name, Password, Email, Phone"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/divider_setting"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/btnSetting"
+                android:layout_marginTop="25dp"
+                android:background="@color/black" />
+
+            <!--show My Case-->
+            <ImageView
+                android:id="@+id/IVMyCase"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/divider_setting"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_insert_drive_file_24" />
+
+            <Button
+                android:id="@+id/btnMyCase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_setting"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="15dp"
+                android:text="My Case"
+                android:textSize="25sp"
+                android:background="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/TV_MyCaseInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnMyCase"
+                android:layout_marginStart="80dp"
+                android:text="Case submission, Case status, Terminate Case"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/divider_myCase"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/TV_MyCaseInstruction"
+                android:layout_marginTop="8dp"
+                android:background="@color/black" />
+
+            <!--show Schedule-->
+            <ImageView
+                android:id="@+id/IVSchedule"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/divider_myCase"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_edit_calendar_24" />
+
+            <Button
+                android:id="@+id/btnSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_myCase"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="15dp"
+                android:text="Schedule"
+                android:textSize="25sp"
+                android:background="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/TV_ScheduleInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnSchedule"
+                android:layout_marginStart="80dp"
+                android:text="Upcoming schedule, Cancelled schedule"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/divider_Schedule"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/TV_ScheduleInstruction"
+                android:layout_marginTop="8dp"
+                android:background="@color/black" />
+
+            <!--show Support-->
+            <ImageView
+                android:id="@+id/IVSupport"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/divider_Schedule"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_help_center_24" />
+
+            <Button
+                android:id="@+id/btnSupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_Schedule"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="15dp"
+                android:text="Support"
+                android:textSize="25sp"
+                android:background="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/TV_SupportInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnSupport"
+                android:layout_marginStart="80dp"
+                android:text="FAQ, Feedback"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/divider_Support"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/TV_SupportInstruction"
+                android:layout_marginTop="8dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/btnLogOut"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_Support"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:background="#C0A1F6"
+                android:text="Log Out"
+                android:textAlignment="center"
+                android:textSize="25sp" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@id/btnLogOut"
+                android:layout_alignParentBottom="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:itemIconTint="@drawable/menu_item_color_selector"
+                app:itemTextColor="@drawable/menu_item_color_selector"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/lawyer_bottom_nav_menu" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

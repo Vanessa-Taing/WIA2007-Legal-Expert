@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lawyerAppointment.lawyerUpcomingAppointment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVupcoming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="100dp" />
+    <TextView
+        android:id="@+id/textNoUpcoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You have no any upcoming appointment"
+        android:layout_centerInParent="true"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+</FrameLayout>

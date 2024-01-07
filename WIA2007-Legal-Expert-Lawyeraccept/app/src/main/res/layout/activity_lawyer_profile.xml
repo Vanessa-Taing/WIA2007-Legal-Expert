@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@android:style/Widget.DeviceDefault.Light.ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".lawyerProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--purple color Profile part-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#8C7AF4">
+
+            <TextView
+                android:id="@+id/TVProfile"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+        </RelativeLayout>
+
+        <!--white color info part-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            >
+
+            <!--Profile Picture-->
+            <ImageView
+                android:id="@+id/imageView_profile_dp"
+                android:layout_width="110dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="James Kim"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="30dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:id="@+id/TVLawyerName"/>
+
+            <TextView
+                android:id="@+id/TVSpecialise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Specialise in Family Law"
+                android:textSize="15sp"
+                android:layout_below="@id/TVLawyerName"
+                android:layout_marginStart="145dp"
+                android:textColor="#6A6969"/>
+
+            <View
+                android:id="@+id/divider_profile"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/imageView_profile_dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/black" />
+
+            <!--show Setting-->
+            <ImageView
+                android:id="@+id/IVSetting"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/divider_profile"
+                android:background="@drawable/baseline_settings_24" />
+
+            <Button
+                android:id="@+id/btnSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_profile"
+                android:layout_marginStart="80dp"
+                android:text="Setting"
+                android:textSize="25sp"
+                android:background="#FFFFFF"
+                />
+
+            <TextView
+                android:id="@+id/TV_settingInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnSetting"
+                android:layout_marginStart="80dp"
+                android:text="Edit Name, Password, Email, Phone"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/divider_setting"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/btnSetting"
+                android:layout_marginTop="25dp"
+                android:background="@color/black" />
+
+            <!--show Schedule-->
+            <ImageView
+                android:id="@+id/IVSchedule"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/divider_setting"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/baseline_calendar_month_24" />
+
+            <Button
+                android:id="@+id/btnSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_setting"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="15dp"
+                android:text="Schedule"
+                android:textSize="25sp"
+                android:background="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/TV_ScheduleInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnSchedule"
+                android:layout_marginStart="80dp"
+                android:text="Upcoming schedule, Cancelled schedule"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/divider_Schedule"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/TV_ScheduleInstruction"
+                android:layout_marginTop="8dp"
+                android:background="@color/black" />
+
+            <!--show Rating-->
+
+            <View
+                android:id="@+id/divider_YourRating"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/RBRating"
+                android:layout_alignBottom="@+id/RBRating"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="62dp"
+                android:background="#FFFCFC" />
+
+
+            <!--show Case History-->
+
+            <Button
+                android:id="@+id/btnLogOut"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RBRating"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:background="#C0A1F6"
+                android:text="Log Out"
+                android:textAlignment="center"
+                android:textSize="25sp" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@id/btnLogOut"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="-16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:itemIconTint="@drawable/menu_item_color_selector"
+                app:itemTextColor="@drawable/menu_item_color_selector"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/lawyer_bottom_nav_menu" />
+
+            <RatingBar
+                android:id="@+id/RBRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider_Schedule"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="15dp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

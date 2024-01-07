@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lawyerPersonal_Info">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--purple color Personal Information part-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#8C7AF4">
+
+            <TextView
+                android:id="@+id/TVLawyerPersonalInfo"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Personal Information"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+        </RelativeLayout>
+
+        <!--white color info part-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            >
+
+            <!--Name-->
+            <TextView
+                android:id="@+id/TVLawyerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/ETLawyerName"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVLawyerName"
+                android:layout_marginTop="10dp"
+                android:inputType="textPersonName"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint=" Full name(as per IC/Passport)"/>
+
+            <!--Gender-->
+            <TextView
+                android:id="@+id/TVLawyerGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETLawyerName"/>
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:orientation="horizontal"
+                android:layout_below="@+id/TVLawyerGender">
+
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textColor="#939393"
+                    android:textSize="25sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16sp"
+                    android:text="Male"
+                    android:textColor="#939393"
+                    android:textSize="25sp" />
+            </RadioGroup>
+
+            <!--Phone Number-->
+            <TextView
+                android:id="@+id/TVLawyerPhoneNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/rgGender"/>
+
+            <EditText
+                android:id="@+id/ETLawyerPhoneNo"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVLawyerPhoneNo"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:inputType="phone"
+                android:hint=" 011-95867400"/>
+
+            <!--Email-->
+            <TextView
+                android:id="@+id/TVLawyerEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETLawyerPhoneNo"/>
+
+            <EditText
+                android:id="@+id/ETLawyerEmail"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:inputType="textEmailAddress"
+                android:layout_below="@id/TVLawyerEmail"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint=" Enter Your Email"/>
+
+            <!--Date Of Birth-->
+            <TextView
+                android:id="@+id/TVLawyerDoB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date Of Birth"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETLawyerEmail"/>
+
+            <EditText
+                android:id="@+id/ETLawyerDoB"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVLawyerDoB"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint=" Select your date of birth(DD/MM/YYYY)"
+                android:inputType="date"
+                android:focusable="false"/>
+
+            <!--State-->
+            <TextView
+                android:id="@+id/TVLawyerState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="State"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETLawyerDoB"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILLayerState"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/TVLawyerState">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ACTVLawyerState"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/material_dynamic_neutral95"
+                    android:hint="State"
+                    android:inputType="none"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Language Spoken-->
+            <TextView
+                android:id="@+id/TVLawyerLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Language Spoken"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/TILLayerState"/>
+
+            <EditText
+                android:id="@+id/ETLawyerLanguage"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVLawyerLanguage"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint=" Bahasa Malaysia, English"/>
+
+            <!--Password-->
+            <TextView
+                android:id="@+id/TVLawyerPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETLawyerLanguage"/>
+
+            <EditText
+                android:id="@+id/ETLawyerPassword"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVLawyerPassword"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:inputType="textPassword"
+                android:hint="  Enter Your Password"/>
+
+            <!--Confirm Password-->
+            <TextView
+                android:id="@+id/TVLawyerConfirmPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm Password"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ETLawyerPassword"/>
+
+            <EditText
+                android:id="@+id/ETLawyerConfirmPwd"
+                android:layout_width="350dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVLawyerConfirmPwd"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:inputType="textPassword"
+                android:hint="  Confirm Your Password"/>
+
+            <!--Next-->
+            <Button
+                android:id="@+id/btnLawyerNext"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ETLawyerConfirmPwd"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Next"/>
+
+            <!--have acc-->
+            <TextView
+                android:id="@+id/TVQuestionHaveAcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_below="@id/btnLawyerNext" />
+
+            <TextView
+                android:id="@+id/TVLawyerHaveAcc_Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log in"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textColor="#2196F3"
+                android:layout_toRightOf="@+id/TVQuestionHaveAcc"
+                android:layout_below="@id/btnLawyerNext"
+                android:layout_marginStart="5dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:elevation="10dp"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/IVShowHideConfirmPwd"
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:layout_below="@id/TVLawyerConfirmPwd"
+                android:layout_marginStart="-36dp"
+                android:layout_marginTop="22dp"
+                android:layout_toEndOf="@id/ETLawyerConfirmPwd" />
+
+            <ImageView
+                android:id="@+id/imageView_show_hide_pwd"
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:layout_below="@id/TVLawyerPassword"
+                android:layout_marginStart="-36dp"
+                android:layout_marginTop="22dp"
+                android:layout_toEndOf="@id/ETLawyerPassword" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
+

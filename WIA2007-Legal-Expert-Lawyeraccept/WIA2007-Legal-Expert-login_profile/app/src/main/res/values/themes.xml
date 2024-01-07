@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.LegalExpert" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Define default background color -->
+        <item name="android:windowBackground">@color/off_white</item>
+    </style>
+
+</resources>
+
+
