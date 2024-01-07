@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LawyerListActivity">
+
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/button_civil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="civil"
+                    android:background="@color/my_primary"
+                    android:onClick="onFilterOptionClicked"
+                    android:textColor="@color/off_white"/>
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/button_consumer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="consumer"
+                    android:background="@color/my_primary"
+                    android:onClick="onFilterOptionClicked"
+                    android:textColor="@color/off_white"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/button_contract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="contract"
+                    android:background="@color/my_primary"
+                    android:onClick="onFilterOptionClicked"
+                    android:textColor="@color/off_white"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/button_criminal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="criminal"
+                    android:background="@color/my_primary"
+                    android:onClick="onFilterOptionClicked"
+                    android:textColor="@color/off_white"/>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/button_family"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="family"
+                    android:background="@color/my_primary"
+                    android:onClick="onFilterOptionClicked"
+                    android:textColor="@color/off_white"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/button_islamic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="islamic"
+                    android:background="@color/my_primary"
+                    android:onClick="onFilterOptionClicked"
+                    android:textColor="@color/off_white"/>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="16dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconTint="@drawable/menu_item_color_selector"
+        app:itemTextColor="@drawable/menu_item_color_selector"
+        app:labelVisibilityMode="labeled"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_below="@id/rv"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

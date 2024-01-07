@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginHorizontal="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:elevation="100dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/lightGray"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request status : "
+            android:id="@+id/statusTxt"
+            android:textColor="@color/darkPurple"
+            android:textStyle="bold"
+            android:background="@color/lightPurple"
+            android:textSize="20sp">
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/caseNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/statusTxt">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/caseNameLabel"
+            android:text="Case Name: "
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/caseName"
+                android:text="Case one"
+                android:textStyle="normal"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/caseTypeLayout"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/caseNameLayout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Case Type: "
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/caseType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Criminal"
+                android:textStyle="normal"
+                android:textSize="20dp"
+                android:textColor="@color/black">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/caseTypeLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/clickableText"
+                android:text="View Details"
+                android:textStyle="bold"
+                android:textColor="@color/darkPurple"
+                android:textSize="16dp"
+                android:clickable="true"
+                android:onClick="onViewDetailsClick" />
+
+            <Button
+                android:id="@+id/btnLawyerDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/rounded_button"
+                android:paddingHorizontal="6dp"
+                android:text="view Lawyer Details"
+                android:textColor="@color/white"></Button>
+        </LinearLayout>
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
