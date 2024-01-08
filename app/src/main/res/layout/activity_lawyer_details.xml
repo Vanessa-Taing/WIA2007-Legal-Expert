@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".shareUserProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_head"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/my_primary">
+
+            <ImageView
+                android:id="@+id/lawyerImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/lawyerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/lawyerImage"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:textSize="20sp"
+                android:hint="Name"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/lawyerImage"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:textSize="12sp"
+                android:hint="State"
+                android:layout_below="@id/lawyerName"
+                android:textColor="@android:color/black"/>
+
+            <RatingBar
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/lawyerImage"
+                android:layout_below="@id/state"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:rating="0.0"
+                style="?android:attr/ratingBarStyleIndicator" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border"
+            android:padding="15dp">
+
+            <!--language-->
+            <RelativeLayout
+                android:id="@+id/RL_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/ic_profile"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_language" />
+
+                <TextView
+                    android:id="@+id/language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_profile"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:hint="language"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_language"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_language"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:id="@+id/RL_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_language"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <!--email-->
+                <ImageView
+                    android:id="@+id/ic_email"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_email" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_email"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="email"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_email"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_email"
+                android:background="@android:color/darker_gray" />
+
+            <!--dob-->
+
+            <!--gender-->
+
+            <!--mobile-->
+            <RelativeLayout
+                android:id="@+id/RL_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_email"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_mobile"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_mobile" />
+
+                <TextView
+                    android:id="@+id/mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_mobile"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="phone number"
+                    android:textColor="@android:color/black" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_phone"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_mobile"
+                android:background="@android:color/darker_gray" />
+
+            <!--lawFirm description-->
+            <RelativeLayout
+                android:id="@+id/RL_lawFirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RL_mobile"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_lawFirm"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_law_firm"/>
+
+                <TextView
+                    android:id="@+id/lawFirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_lawFirm"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="law firm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_lawFirm"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_lawFirm"
+                android:background="@android:color/darker_gray" />
+
+
+            <!--specialise description-->
+            <RelativeLayout
+                android:id="@+id/RL_specialise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RL_lawFirm"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_specialise"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_specialization"/>
+
+                <TextView
+                    android:id="@+id/specialization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_specialise"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="specialization "
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_specialization"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_specialise"
+                android:background="@android:color/darker_gray" />
+
+            <!--experience year description-->
+            <RelativeLayout
+                android:id="@+id/RL_expYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RL_specialise"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ic_expYear"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/baseline_calendar_month_24"/>
+
+                <TextView
+                    android:id="@+id/EXPYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ic_expYear"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="experience year "
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_expYear"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_expYear"
+                android:background="@android:color/darker_gray" />
+
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:elevation="10dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnSentRequest"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Request" />
+
+            <Button
+                android:id="@+id/btnContactLawyer"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Contact Lawyer" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+
+
+
+
+
+

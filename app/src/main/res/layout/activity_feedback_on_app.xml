@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    tools:context=".FeedbackOnApp">
+
+    <TextView
+        android:id="@+id/TVFeedbackTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Feedback Matters"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:id="@+id/TVFeedbackSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let us know how can we improve."
+        android:layout_below="@id/TVFeedbackTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:id="@+id/TVRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate the app:"
+        android:layout_below="@id/TVFeedbackSubtitle"
+        android:layout_marginTop="16dp"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TVRating"
+        android:layout_marginTop="8dp"
+        android:numStars="5"
+        android:stepSize="1"
+        android:progressTint="@color/my_primary"/>
+
+    <EditText
+        android:id="@+id/ETFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please write your comments"
+        android:layout_below="@id/ratingBar"
+        android:layout_marginTop="16dp"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        android:gravity="top" />
+
+    <Button
+        android:id="@+id/BtnSubmitFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Submit Feedback"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:layout_margin="24dp"
+        />
+</RelativeLayout>

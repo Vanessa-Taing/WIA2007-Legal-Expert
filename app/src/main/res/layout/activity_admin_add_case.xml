@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".userCaseDescription">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--purple color Upload your case now part-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#8C7AF4">
+
+            <TextView
+                android:id="@+id/TVUploadYourCase"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="Add new case"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/TVSkipUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Back"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <!--white color case part-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <!--Case name-->
+            <EditText
+                android:id="@+id/ETCaseLink"
+                android:layout_width="360dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVCaseLink"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint="  provide the complete case link" />
+
+            <TextView
+                android:id="@+id/TVShareTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Case Name"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/ETReport"
+                android:layout_width="360dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVShareTitle"
+                android:layout_marginTop="10dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint="provide case name here" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="66dp"
+                android:layout_height="81dp"
+                android:elevation="10dp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                />
+
+            <!--Case type-->
+            <TextView
+                android:id="@+id/TVCaseType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ETReport"
+                android:layout_marginTop="30dp"
+                android:text="Case Type"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILCaseType"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="355dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/TVCaseType"
+                android:layout_marginTop="10dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ACTVCaseType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/material_dynamic_neutral95"
+                    android:hint="pick the case type"
+                    android:inputType="none"
+                    android:textSize="22sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Case description-->
+            <TextView
+                android:id="@+id/TVLawyerRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ETCaseSummary"
+                android:layout_marginTop="30dp"
+                android:text="Case Description"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/TVCaseSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/TILCaseType"
+                android:layout_marginTop="30dp"
+                android:text="Case Summary"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/ETLawyerRating"
+                android:layout_width="360dp"
+                android:layout_height="300dp"
+                android:layout_below="@+id/TVLawyerRating"
+                android:layout_marginTop="20dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint="Provide case description here" />
+
+            <!--Upload document-->
+
+            <EditText
+                android:id="@+id/ETCaseSummary"
+                android:layout_width="360dp"
+                android:layout_height="300dp"
+                android:layout_below="@+id/TVCaseSummary"
+                android:layout_marginTop="20dp"
+                android:background="@color/material_dynamic_neutral95"
+                android:hint="Provide case summary here" />
+
+            <TextView
+                android:id="@+id/TVCaseLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ETLawyerRating"
+                android:layout_marginTop="30dp"
+                android:text="Case Link"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ETCaseLink"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Submit"
+                android:textSize="30dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
+
