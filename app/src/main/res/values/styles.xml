@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values/styles.xml -->
+<resources>
+
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- ... other theme attributes ... -->
+    </style>
+
+    <!-- Style for your button -->
+    <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@color/my_primary</item>
+    </style>
+
+    <style name="DatePickerTheme">
+        <item name="colorAccent">@color/darkPurple</item>
+    </style>
+
+    <style name="TimePickerTheme">
+        <item name="colorAccent">@color/darkPurple</item>
+    </style>
+
+
+
+</resources>

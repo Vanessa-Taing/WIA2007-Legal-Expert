@@ -1,0 +1,76 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
+
+        <TextView
+            android:id="@+id/appointmentLawyer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book appointment with lawyer Tan Yuan Yuan"
+            android:textColor="@color/darkPurple"
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold"
+            android:textSize="15sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_below="@+id/appointmentLawyer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select a date for your appointment"
+            android:textColor="@color/darkPurple"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp"/>
+
+        <DatePicker
+            android:theme="@style/DatePickerTheme"
+            android:id="@+id/appointmentDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDate"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/textViewStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select appointment Time"
+            android:textSize="18sp"
+            android:layout_below="@id/appointmentDatePicker"
+            android:textColor="@color/darkPurple"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TimePicker
+            android:theme="@style/TimePickerTheme"
+            android:id="@+id/appointmentTimePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewStartTime"
+            />
+
+        <Button
+            android:id="@+id/btnConfirmAppointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appointmentTimePicker"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_button"
+            android:text="Book Appointment"
+            android:paddingHorizontal="40dp"
+            android:textColor="#FFFFFF" />
+
+    </RelativeLayout>
+
+</ScrollView>
